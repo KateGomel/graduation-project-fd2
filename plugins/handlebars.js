@@ -1,4 +1,4 @@
-const templateExtensionRegExp = /\.(nbs)$/;
+const templateExtensionRegExp = /\.(hbs)$/;
 
 export const handlebars = () => {
   return {
@@ -6,7 +6,7 @@ export const handlebars = () => {
     transform: (fileContent, fileName) => {
       if (templateExtensionRegExp.test(fileName)) {
         return {
-          code: `export default function template(props = {}) {return \`${fileContent}\`}`,
+          code: `export default function template(props = {}){ return \`${fileContent}\`}`,
           map: null,
         };
       }
