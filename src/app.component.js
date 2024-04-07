@@ -6,6 +6,7 @@ import "./core/Router";
 import "./pages/home/home.component";
 import "./pages/not-found/not-found.component";
 import "./pages/sing-in/sing-in.component";
+import "./pages/sing-up/sing-up.component";
 
 export class App extends Component {
   constructor() {
