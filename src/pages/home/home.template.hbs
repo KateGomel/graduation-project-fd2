@@ -1,5 +1,14 @@
-<main class="flex min-h-screen min-w-full bg-emerald-400">
-  <div class="flex mx-auto mt-40">
-    <h1 class="text-indigo-800 text-7xl">English Irregular Verbs</h1>
-  </div>
-</main>
+<div class="grid grid-rows-layout min-h-screen">
+  <nav class="flex gap-5">
+    <router-link
+      href="${props.routes.signIn}"
+      class="text-blue-600 hover:text-blue-700"
+      label="Sign In"
+    ></router-link>
+    <router-link
+      href="${props.routes.signUp}"
+      class="text-blue-600 hover:text-blue-700"
+      label="Sign Up"
+    ></router-link>
+  </nav>
+</div>
