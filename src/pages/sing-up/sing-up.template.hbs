@@ -1,1 +1,29 @@
-<h1>Sing Up</h1>
+<main class="flex bg-emerald-300 h-screen w-screen font-serif">
+  <div
+    class="flex flex-col bg-emerald-100 w-[36rem] h-[36rem] mx-auto mt-40 rounded-md p-7 shadow-2xl justify-between"
+  >
+    <div class="flex items-center gap-2">
+      <i class="icon-arrow-left text-indigo-500"></i>
+      <router-link
+        label="Back to LandingPage"
+        class="text-indigo-500"
+        href="${props.routes.home}"
+      ></router-link>
+    </div>
+    <div class="mt-16">
+      <h1 class="text-2xl text-indigo-600">Sign up your account</h1>
+      <p class="text-slate-400 mt-3 text-md">Already have an account?
+        <router-link
+          label="Sign In"
+          class="text-indigo-500"
+          href="${props.routes.signIn}"
+        ></router-link></p>
+      <form class="flex flex-col gap-3 sign-in-form mt-12">
+        <ui-input label="Email address" name="email" type="email"></ui-input>
+        <ui-input label="Password" type="password" name="password"></ui-input>
+        <ui-input label="Password" type="password" name="password"></ui-input>
+        <ui-button caption="Sign Up" class-name="block w-full"></ui-button>
+      </form>
+    </div>
+  </div>
+</main>
