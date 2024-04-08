@@ -1,14 +1,18 @@
-<div class="grid grid-rows-layout min-h-screen">
-  <nav class="flex gap-5">
-    <router-link
-      href="${props.routes.signIn}"
-      class="text-blue-600 hover:text-blue-700"
-      label="Sign In"
-    ></router-link>
-    <router-link
-      href="${props.routes.signUp}"
-      class="text-blue-600 hover:text-blue-700"
-      label="Sign Up"
-    ></router-link>
-  </nav>
-</div>
+<main class="flex bg-emerald-300 h-screen">
+  <div
+    class="flex bg-emerald-100 w-[40rem] h-[40rem] mx-auto mt-40 rounded-md p-3 shadow-2xl justify-center font-sans"
+  >
+    <nav class="flex gap-16 flex-wrap h-max">
+      <router-link
+        href="${props.routes.signIn}"
+        class="text-indigo-600 hover:text-indigo-800 text-2xl font-bold"
+        label="Sign In"
+      ></router-link>
+      <router-link
+        href="${props.routes.signUp}"
+        class="text-indigo-600 hover:text-indigo-800 text-2xl font-bold"
+        label="Sign Up"
+      ></router-link>
+    </nav>
+  </div>
+</main>
