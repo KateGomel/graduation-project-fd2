@@ -1,16 +1,26 @@
-<main class="flex bg-emerald-300 h-screen">
+<main class="flex bg-emerald-300 h-screen font-serif">
   <div
-    class="flex bg-emerald-100 w-[40rem] h-[40rem] mx-auto mt-40 rounded-md p-3 shadow-2xl justify-center font-sans"
+    class="flex flex-col bg-emerald-100 w-[40rem] h-[40rem] mx-auto mt-40 rounded-md p-7 shadow-2xl justify-between"
   >
-    <nav class="flex gap-16 flex-wrap h-max">
+    <div class="text-center">
+      <h1 class="text-indigo-600 text-8xl font-bold pb-10">
+        English Irregular Verbs
+      </h1>
+
+      <p class="text-indigo-600 text-4xl">
+        Start Learning Now
+      </p>
+    </div>
+
+    <nav class="flex h-max justify-around">
       <router-link
         href="${props.routes.signIn}"
-        class="text-indigo-600 hover:text-indigo-800 text-2xl font-bold"
+        class="block text-indigo-600 hover:text-indigo-800 text-3xl"
         label="Sign In"
       ></router-link>
       <router-link
         href="${props.routes.signUp}"
-        class="text-indigo-600 hover:text-indigo-800 text-2xl font-bold"
+        class="block text-indigo-600 hover:text-indigo-800 text-3xl"
         label="Sign Up"
       ></router-link>
     </nav>
