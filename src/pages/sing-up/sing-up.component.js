@@ -8,6 +8,9 @@ export class SingUp extends Component {
     this.template = template({
       routes: ROUTES,
     });
+    this.state = {
+      isLoading: false,
+    };
   }
 }
 
