@@ -2,6 +2,6 @@ export const ROUTES = {
   home: "/",
   signIn: "/sign-in",
   signUp: "/sign-up",
-  notFound: "/404",
   dashboard: "/dashboard",
+  notFound: "/404",
 };

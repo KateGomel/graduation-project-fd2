@@ -6,9 +6,9 @@
       component="home-page"
     ></app-route>
     <app-route
-      path="${props.routes.notFound}"
-      title="404 | Not Found"
-      component="not-found"
+      path="${props.routes.dashboard}"
+      title="Dashboard page"
+      component="dashboard-page"
     ></app-route>
     <app-route
       path="${props.routes.signIn}"
@@ -19,6 +19,11 @@
       path="${props.routes.signUp}"
       title="Sing Up"
       component="sing-up-page"
+    ></app-route>
+    <app-route
+      path="${props.routes.notFound}"
+      title="404 | Not Found"
+      component="not-found"
     ></app-route>
     <app-outlet></app-outlet>
   </app-router>
