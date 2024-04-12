@@ -13,6 +13,7 @@ import "./pages/dashboard/dashboard.component";
 import "./components/input/input.component";
 import "./components/button/button.component";
 import "./components/loader/loader.component";
+import "./components/toast/toast.component";
 
 export class App extends Component {
   constructor() {
