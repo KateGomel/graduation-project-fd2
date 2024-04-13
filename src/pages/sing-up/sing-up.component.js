@@ -28,6 +28,11 @@ export class SingUp extends Component {
   registerUser = (evt) => {
     evt.preventDefault();
     const formData = extractFormData(evt.target);
+    if (formData.password != formData.repeatPassword) {
+      useToastNotification({ message: "Пароли должны совпадать" });
+      return;
+    }
+
     this.toggleIsLoading();
     authService
       .singUp(formData.email, formData.password)

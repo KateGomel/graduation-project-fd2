@@ -22,7 +22,24 @@ export class App extends Component {
     this.template = template({
       routes: ROUTES,
     });
-    this.state = {};
+    this.state = {
+      isLoading: false,
+    };
+  }
+
+  // toggleIsLoading = () => {
+  //   this.setState({
+  //     ...this.state,
+  //     isLoading: !this.state.isLoading,
+  //   });
+  // };
+
+  initializeApp() {
+    // this.toggleIsLoading();
+  }
+
+  componentDidMount() {
+    this.initializeApp();
   }
 }
 
