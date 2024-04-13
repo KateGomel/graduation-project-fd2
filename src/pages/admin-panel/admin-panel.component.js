@@ -1,8 +1,8 @@
 import { ROUTES } from "../../constants/routes";
 import { Component } from "../../core/Component";
-import template from "./dashboard.template.hbs";
+import template from "./admin-panel.template.hbs";
 
-export class Dashboard extends Component {
+export class AdminPanel extends Component {
   constructor() {
     super();
     this.template = template({
@@ -14,4 +14,4 @@ export class Dashboard extends Component {
   }
 }
 
-customElements.define("dashboard-page", Dashboard);
+customElements.define("admin-panel-page", AdminPanel);
