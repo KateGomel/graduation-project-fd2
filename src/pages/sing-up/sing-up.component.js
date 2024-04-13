@@ -1,6 +1,7 @@
 import { Component } from "../../core/Component";
 import template from "./sing-up.template.hbs";
 import { ROUTES } from "../../constants/routes";
+import { extractFormData } from "../../utils/extractFormData";
 
 export class SingUp extends Component {
   constructor() {
@@ -22,7 +23,8 @@ export class SingUp extends Component {
 
   registerUser = (evt) => {
     evt.preventDefault();
-    console.log(evt.target);
+    const formData = extractFormData(evt.target);
+    this.toggleIsLoading();
   };
 
   componentDidMount() {
