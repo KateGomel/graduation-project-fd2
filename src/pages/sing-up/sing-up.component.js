@@ -20,9 +20,18 @@ export class SingUp extends Component {
     });
   };
 
-  componentDidMount() {}
+  registerUser = (evt) => {
+    evt.preventDefault();
+    console.log(evt.target);
+  };
 
-  componentWillUnmount() {}
+  componentDidMount() {
+    this.addEventListener("submit", this.registerUser);
+  }
+
+  componentWillUnmount() {
+    this.removeEventListener("submit", this.registerUser);
+  }
 }
 
 customElements.define("sing-up-page", SingUp);
