@@ -1,1 +1,19 @@
-<h1> 404 | Not Found </h1>
+<main class="flex bg-emerald-300 h-screen w-screen font-serif relative">
+  <ui-loader loading="{{isLoading}}" class-name="bg-white/30 z-10"></ui-loader>
+  <div
+    class="flex flex-col bg-emerald-100 w-[36rem] h-[31rem] mx-auto mt-40 rounded-md p-7 shadow-2xl"
+  >
+    <div class="flex items-center gap-2 text-xl">
+      <i class="icon-arrow-left text-indigo-600 hover:text-indigo-800"></i>
+      <router-link
+        label="Back to DashBoard"
+        class="text-indigo-600 hover:text-indigo-800"
+        href="${props.routes.dashboard}"
+      ></router-link>
+    </div>
+    <div class="mt-16">
+      <h1 class="text-3xl text-indigo-600">There is no such page</h1>
+
+    </div>
+  </div>
+</main>

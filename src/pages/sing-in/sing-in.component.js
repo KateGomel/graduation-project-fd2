@@ -12,6 +12,17 @@ export class SingIn extends Component {
       isLoading: false,
     };
   }
+
+  toggleIsLoading = () => {
+    this.setState({
+      ...this.state,
+      isLoading: !this.state.isLoading,
+    });
+  };
+
+  componentDidMount() {}
+
+  componentWillUnmount() {}
 }
 
 customElements.define("sing-in-page", SingIn);
