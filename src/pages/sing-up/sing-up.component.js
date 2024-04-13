@@ -3,6 +3,9 @@ import template from "./sing-up.template.hbs";
 import { ROUTES } from "../../constants/routes";
 import { extractFormData } from "../../utils/extractFormData";
 import { authService } from "../../services/Auth";
+import { useToastNotification } from "../../hooks/useToastNotification";
+import { TOAST_TYPE } from "../../constants/toast";
+import { useNavigate } from "../../hooks/useNavigate";
 
 export class SingUp extends Component {
   constructor() {
@@ -26,7 +29,18 @@ export class SingUp extends Component {
     evt.preventDefault();
     const formData = extractFormData(evt.target);
     this.toggleIsLoading();
-    authService.singUp(formData.email, formData.password);
+    authService
+      .singUp(formData.email, formData.password)
+      .then(() => {
+        useToastNotification({ message: "Success!", type: TOAST_TYPE.success });
+        useNavigate(ROUTES.dashboard);
+      })
+      .catch((error) => {
+        useToastNotification({ message: error.message });
+      })
+      .finally(() => {
+        this.toggleIsLoading();
+      });
   };
 
   componentDidMount() {
