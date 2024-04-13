@@ -14,9 +14,9 @@ export class SingUp extends Component {
       routes: ROUTES,
     });
     this.state = {
-      // error: {
-      //   password: "",
-      //   repeatPassword: "",
+      // errors: {
+      //   password: ,
+      //   repeatPassword: ,
       // },
       isLoading: false,
     };
@@ -34,10 +34,6 @@ export class SingUp extends Component {
     const formData = extractFormData(evt.target);
     if (formData.password != formData.repeatPassword) {
       useToastNotification({ message: "Пароли должны совпадать" });
-      // this.setState({
-      //   ...this.state,
-      //        });
-      // console.log(this.state);
       return;
     }
     this.toggleIsLoading();
