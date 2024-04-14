@@ -6,6 +6,7 @@ import { authService } from "../../services/Auth";
 import { useToastNotification } from "../../hooks/useToastNotification";
 import { TOAST_TYPE } from "../../constants/toast";
 import { useNavigate } from "../../hooks/useNavigate";
+import { useUserStore } from "../../hooks/useUserStore";
 
 export class SingUp extends Component {
   constructor() {
@@ -37,9 +38,11 @@ export class SingUp extends Component {
       return;
     }
     this.toggleIsLoading();
+    const { setUser } = useUserStore();
     authService
       .singUp(formData.email, formData.password)
-      .then(() => {
+      .then((data) => {
+        setUser({ ...data.user });
         useToastNotification({ message: "Success!", type: TOAST_TYPE.success });
         useNavigate(ROUTES.dashboard);
       })

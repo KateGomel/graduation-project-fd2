@@ -6,6 +6,7 @@ import { authService } from "../../services/Auth";
 import { TOAST_TYPE } from "../../constants/toast";
 import { useToastNotification } from "../../hooks/useToastNotification";
 import { useNavigate } from "../../hooks/useNavigate";
+import { useUserStore } from "../../hooks/useUserStore";
 
 export class SingIn extends Component {
   constructor() {
@@ -29,9 +30,11 @@ export class SingIn extends Component {
     evt.preventDefault();
     const formData = extractFormData(evt.target);
     this.toggleIsLoading();
+    const { setUser } = useUserStore();
     authService
       .singIn(formData.email, formData.password)
-      .then(() => {
+      .then((data) => {
+        setUser({ ...data.user });
         useToastNotification({ message: "Success!", type: TOAST_TYPE.success });
         useNavigate(ROUTES.dashboard);
       })
