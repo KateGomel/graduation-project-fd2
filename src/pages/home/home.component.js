@@ -27,14 +27,29 @@ export class HomePage extends Component {
     const { getUser } = useUserStore();
     const user = getUser();
     if (getUser()) {
-      this.setState({
-        links: [
-          {
-            label: "Dashboard",
-            href: ROUTES.dashboard,
-          },
-        ],
-      });
+      if (user.email == "admin@email.by") {
+        this.setState({
+          links: [
+            {
+              label: "Dashboard",
+              href: ROUTES.dashboard,
+            },
+            {
+              label: "AdminPanel",
+              href: ROUTES.adminPanel,
+            },
+          ],
+        });
+      } else {
+        this.setState({
+          links: [
+            {
+              label: "Dashboard",
+              href: ROUTES.dashboard,
+            },
+          ],
+        });
+      }
     }
   };
 
