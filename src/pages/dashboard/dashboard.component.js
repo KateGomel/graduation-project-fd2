@@ -2,6 +2,7 @@ import template from "./dashboard.template.hbs";
 import { ROUTES } from "../../constants/routes";
 import { Component } from "../../core/Component";
 import { apiService } from "../../services/Api";
+import { useUserStore } from "../../hooks/useUserStore";
 
 export class Dashboard extends Component {
   constructor() {
@@ -17,7 +18,16 @@ export class Dashboard extends Component {
   }
   onClick() {}
 
+  setUser() {
+    const { getUser } = useUserStore();
+    this.setState({
+      ...this.state,
+      user: getUser(),
+    });
+  }
+
   componentDidMount() {
+    this.setUser();
     this.addEventListener("click", this.onClick);
   }
 

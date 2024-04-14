@@ -2,8 +2,41 @@
 <div
   class="grid grid-cols-12 bg-emerald-300 h-screen w-screen font-serif animate-fade"
 >
-  <div class="col-span-2 bg-emerald-300 pt-8 px-8">
+  <div class="col-span-2 bg-emerald-300 pt-8 px-8 block">
+
+    <div class="flex flex-col items-center px-2 mt-3">
+
+      <a
+        href="mailto:{{user.email}}"
+        class="text-2xl text-indigo-600 hover:text-indigo-800"
+      >{{user.email}}</a>
+      <button
+        class="logout-btn border-b border-zinc-800 mt-2 text-lg flex items-center rounded p-2 w-full justify-center gap-2 hover:text-indigo-800"
+      >
+        <i class="icon-log-out"></i>
+        logout
+      </button>
+    </div>
+
   </div>
   <div class="col-span-10 bg-emerald-100 pt-20 px-20">
+    <div class="flex flex-wrap mt-3 gap-4">
+      {{#each boards}}
+        <div
+          data-id="{{this.id}}"
+          class="relative board-item border rounded cursor-pointer transition-shadow hover:shadow-slate-200 hover:shadow-lg"
+        >
+          <button
+            data-id="{{this.id}}"
+            data-title="{{this.title}}"
+            class="delete-board absolute top-0 right-0 hover:text-red-500 bg-transparent rounded-lg text-lg w-8 h-8 ms-auto inline-flex justify-center items-center"
+          >
+            <div class="icon-x-circle"></div>
+          </button>
+          <img src="/board.png" alt="" class="w-44 h-44" />
+          <div class="p-4 line-clamp-1">{{this.title}}</div>
+        </div>
+      {{/each}}
+    </div>
   </div>
 </div>
