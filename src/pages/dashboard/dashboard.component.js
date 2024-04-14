@@ -29,14 +29,26 @@ export class Dashboard extends Component {
   logout = () => {
     this.toggleIsLoading();
     const { setUser } = useUserStore();
-    authService.logOut().then(() => {
-      setUser(null);
-      useToastNotification({ type: TOAST_TYPE.success, message: "Success!" });
-      useNavigate(ROUTES.signIn);
-    });
+    authService
+      .logOut()
+      .then(() => {
+        setUser(null);
+        useToastNotification({ type: TOAST_TYPE.success, message: "Success!" });
+        useNavigate(ROUTES.signIn);
+      })
+      .catch(({ message }) => {
+        useToastNotification({ message });
+      })
+      .finally(() => {
+        this.toggleIsLoading();
+      });
   };
 
-  onClick() {}
+  onClick = ({ target }) => {
+    if (target.closest(".logout-btn")) {
+      this.logout();
+    }
+  };
 
   setUser() {
     const { getUser } = useUserStore();
