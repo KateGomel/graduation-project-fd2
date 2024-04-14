@@ -1,8 +1,11 @@
 import template from "./dashboard.template.hbs";
 import { ROUTES } from "../../constants/routes";
 import { Component } from "../../core/Component";
-import { apiService } from "../../services/Api";
 import { useUserStore } from "../../hooks/useUserStore";
+import { authService } from "../../services/Auth";
+import { useToastNotification } from "../../hooks/useToastNotification";
+import { TOAST_TYPE } from "../../constants/toast";
+import { useNavigate } from "../../hooks/useNavigate";
 
 export class Dashboard extends Component {
   constructor() {
@@ -16,6 +19,23 @@ export class Dashboard extends Component {
       board: [],
     };
   }
+  toggleIsLoading = () => {
+    this.setState({
+      ...this.state,
+      isLoading: !this.state.isLoading,
+    });
+  };
+
+  logout = () => {
+    this.toggleIsLoading();
+    const { setUser } = useUserStore();
+    authService.logOut().then(() => {
+      setUser(null);
+      useToastNotification({ type: TOAST_TYPE.success, message: "Success!" });
+      useNavigate(ROUTES.signIn);
+    });
+  };
+
   onClick() {}
 
   setUser() {
