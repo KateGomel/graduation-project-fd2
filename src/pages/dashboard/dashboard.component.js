@@ -19,6 +19,7 @@ export class Dashboard extends Component {
       board: [],
     };
   }
+
   toggleIsLoading = () => {
     this.setState({
       ...this.state,
