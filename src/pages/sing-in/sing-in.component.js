@@ -33,8 +33,8 @@ export class SingIn extends Component {
     const { setUser } = useUserStore();
     authService
       .singIn(formData.email, formData.password)
-      .then((data) => {
-        setUser({ ...data.user });
+      .then((user) => {
+        setUser(user);
         useToastNotification({ message: "Success!", type: TOAST_TYPE.success });
         useNavigate(ROUTES.dashboard);
       })

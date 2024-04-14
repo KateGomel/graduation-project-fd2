@@ -23,7 +23,7 @@ export class Dashboard extends Component {
   delete() {}
 
   componentDidMount() {
-    this.create();
+    // this.create();
   }
 
   componentWillUnmount() {}

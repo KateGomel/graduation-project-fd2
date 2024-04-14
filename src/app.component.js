@@ -42,12 +42,11 @@ export class App extends Component {
   initializeApp() {
     this.toggleIsLoading();
     const { setUser } = useUserStore();
+
     authService
       .authorizeUser()
       .then((user) => {
-        if (user.uid) {
-          setUser({ ...user });
-        }
+        setUser(user.uid ? user : null);
       })
       .catch((error) => {
         useToastNotification({ message: error.message });

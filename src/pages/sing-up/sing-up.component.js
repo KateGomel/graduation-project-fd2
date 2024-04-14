@@ -41,8 +41,8 @@ export class SingUp extends Component {
     const { setUser } = useUserStore();
     authService
       .singUp(formData.email, formData.password)
-      .then((data) => {
-        setUser({ ...data.user });
+      .then((user) => {
+        setUser(user);
         useToastNotification({ message: "Success!", type: TOAST_TYPE.success });
         useNavigate(ROUTES.dashboard);
       })
