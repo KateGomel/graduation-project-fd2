@@ -11,12 +11,19 @@ export class Dashboard extends Component {
     });
     this.state = {
       isLoading: false,
+      user: null,
+      board: [],
     };
   }
+  onClick() {}
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.addEventListener("click", this.onClick);
+  }
 
-  componentWillUnmount() {}
+  componentWillUnmount() {
+    this.removeEventListener("click", this.onClick);
+  }
 }
 
 customElements.define("dashboard-page", Dashboard);
