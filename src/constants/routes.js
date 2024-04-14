@@ -4,5 +4,6 @@ export const ROUTES = {
   signUp: "/sign-up",
   dashboard: "/dashboard",
   adminPanel: "/admin-panel",
+  board: "/board",
   notFound: "/404",
 };
