@@ -42,7 +42,6 @@ export class App extends Component {
   initializeApp() {
     this.toggleIsLoading();
     const { setUser } = useUserStore();
-
     authService
       .authorizeUser()
       .then((user) => {

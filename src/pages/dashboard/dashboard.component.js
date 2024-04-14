@@ -1,8 +1,7 @@
+import template from "./dashboard.template.hbs";
 import { ROUTES } from "../../constants/routes";
 import { Component } from "../../core/Component";
 import { apiService } from "../../services/Api";
-
-import template from "./dashboard.template.hbs";
 
 export class Dashboard extends Component {
   constructor() {
@@ -15,16 +14,7 @@ export class Dashboard extends Component {
     };
   }
 
-  create() {
-    apiService.post("/module", { title: "title" });
-  }
-  read() {}
-  update() {}
-  delete() {}
-
-  componentDidMount() {
-    // this.create();
-  }
+  componentDidMount() {}
 
   componentWillUnmount() {}
 }

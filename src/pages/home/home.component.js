@@ -26,7 +26,6 @@ export class HomePage extends Component {
   setLinks = () => {
     const { getUser } = useUserStore();
     const user = getUser();
-    console.log(user);
     if (getUser()) {
       if (user.email == "admin@email.by") {
         this.setState({
