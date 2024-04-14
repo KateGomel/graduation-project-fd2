@@ -45,7 +45,9 @@ export class App extends Component {
     authService
       .authorizeUser()
       .then((user) => {
-        setUser(user.uid ? user : null);
+        if (user.uid) {
+          setUser({ ...user });
+        }
       })
       .catch((error) => {
         useToastNotification({ message: error.message });
