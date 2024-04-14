@@ -1,5 +1,7 @@
 import { ROUTES } from "../../constants/routes";
 import { Component } from "../../core/Component";
+import { apiService } from "../../services/Api";
+
 import template from "./dashboard.template.hbs";
 
 export class Dashboard extends Component {
@@ -12,6 +14,19 @@ export class Dashboard extends Component {
       isLoading: false,
     };
   }
+
+  create() {
+    apiService.post("/module", { title: "title" });
+  }
+  read() {}
+  update() {}
+  delete() {}
+
+  componentDidMount() {
+    this.create();
+  }
+
+  componentWillUnmount() {}
 }
 
 customElements.define("dashboard-page", Dashboard);

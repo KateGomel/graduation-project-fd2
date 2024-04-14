@@ -4,24 +4,16 @@ class ApiService {
   constructor() {
     this.apiInstance = axios.create({
       baseURL:
-        "https://irregular-verbs-e64f2-default-rtdb.europe-west1.firebasedatabase.app/",
+        "https://irregular-verbs-e64f2-default-rtdb.europe-west1.firebasedatabase.app",
     });
   }
 
-  post(url, data = {}, headers = {}) {
-    return this.apiInstance.post(url.concat(".json"), data, headers);
+  post(url, data = {}, header = {}) {
+    return this.apiInstance.post(url.concat(".json"), data, header);
   }
 
-  get(url, headers = {}) {
-    return this.apiInstance.get(url.concat(".json"), headers);
-  }
-
-  patch(url, data, headers = {}) {
-    return this.apiInstance.patch(url.concat(".json"), data, headers);
-  }
-
-  delete(url, headers = {}) {
-    return this.apiInstance.delete(url.concat(".json"), headers);
+  get(url, header = {}) {
+    return this.apiInstance.get();
   }
 }
 
