@@ -13,7 +13,14 @@
     </div>
 
     <nav class="flex h-max justify-around">
-      <router-link
+      {{#each links}}
+        <router-link
+          href="{{this.href}}"
+          class="block text-indigo-600 hover:text-indigo-800 text-3xl"
+          label="{{this.label}}"
+        ></router-link>
+      {{/each}}
+      {{! <router-link
         href="${props.routes.signIn}"
         class="block text-indigo-600 hover:text-indigo-800 text-3xl"
         label="Sign In"
@@ -22,7 +29,7 @@
         href="${props.routes.signUp}"
         class="block text-indigo-600 hover:text-indigo-800 text-3xl"
         label="Sign Up"
-      ></router-link>
+      ></router-link> }}
     </nav>
   </div>
 </main>
