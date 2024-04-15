@@ -20,6 +20,12 @@ import "./components/toast/toast.component";
 import { authService } from "./services/Auth";
 import { useToastNotification } from "./hooks/useToastNotification";
 import { useUserStore } from "./hooks/useUserStore";
+// import { registerHelper } from "handlebars";
+// registerHelper("admin", function (user) {
+//   if (user.email == "admin@email.by") {
+//     return true;
+//   }
+// });
 
 export class App extends Component {
   constructor() {

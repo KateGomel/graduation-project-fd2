@@ -6,6 +6,9 @@ import { authService } from "../../services/Auth";
 import { useToastNotification } from "../../hooks/useToastNotification";
 import { TOAST_TYPE } from "../../constants/toast";
 import { useNavigate } from "../../hooks/useNavigate";
+// import { adminFn } from "../../utils/adminHelper";
+// import { registerHelper } from "handlebars";
+// registerHelper("admin", adminFn);
 
 export class Dashboard extends Component {
   constructor() {
