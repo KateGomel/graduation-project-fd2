@@ -2,5 +2,4 @@
 //   if (user.email == "admin@email.by") {
 //     return true;
 //   }
-
 // };

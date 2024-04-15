@@ -9,6 +9,8 @@ import { useNavigate } from "../../hooks/useNavigate";
 // import { adminFn } from "../../utils/adminHelper";
 // import { registerHelper } from "handlebars";
 // registerHelper("admin", adminFn);
+//
+// Handlebars.registerHelper("foo", function(){})???
 
 export class Dashboard extends Component {
   constructor() {
