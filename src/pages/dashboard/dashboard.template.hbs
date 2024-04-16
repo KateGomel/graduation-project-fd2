@@ -14,8 +14,7 @@
         <i class="icon-log-out logout-btn"></i>
         Logout
       </button>
-      {{!-- {{!  }} --}}
-      {{#if "admin"}}
+      {{#if user.email}}
         <button
           class="admin-panel-btn border-b border-zinc-800 mt-4 text-lg flex items-center rounded p-2 w-full justify-center gap-2 hover:text-indigo-800"
         >
@@ -23,7 +22,6 @@
           AdminPanel
         </button>
       {{/if}}
-      {{!-- {{!  }} --}}
     </div>
   </div>
   <div class="col-span-10 bg-emerald-100 pt-20 px-20 text-2xl text-indigo-900">
