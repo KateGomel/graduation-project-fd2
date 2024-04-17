@@ -1,4 +1,4 @@
-export const words = [
+export const WORDS = [
   {
     group: 1,
     translate: "начинать",

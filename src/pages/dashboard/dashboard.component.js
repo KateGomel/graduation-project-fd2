@@ -6,6 +6,8 @@ import { authService } from "../../services/Auth";
 import { useToastNotification } from "../../hooks/useToastNotification";
 import { TOAST_TYPE } from "../../constants/toast";
 import { useNavigate } from "../../hooks/useNavigate";
+import { WORDS } from "../../constants/words";
+import { apiService } from "../../services/Api";
 
 export class Dashboard extends Component {
   constructor() {
@@ -28,6 +30,12 @@ export class Dashboard extends Component {
     });
   };
 
+  createdArrayWords() {
+    WORDS.forEach((item) => {
+      apiService.post("/words", item);
+    });
+  }
+
   logout = () => {
     this.toggleIsLoading();
     const { setUser } = useUserStore();
@@ -49,6 +57,9 @@ export class Dashboard extends Component {
   onClick = ({ target }) => {
     if (target.closest(".logout-btn")) {
       this.logout();
+    }
+    if (target.closest(".btn")) {
+      this.createdArrayWords();
     }
   };
 
