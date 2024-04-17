@@ -6,22 +6,22 @@
     <div class="flex flex-col items-center px-2 mt-3">
       <a
         href="mailto:{{user.email}}"
-        class="text-2xl text-indigo-800"
+        class="text-3xl text-indigo-800"
       >{{user.email}}</a>
       <button
-        class="logout-btn border-b border-zinc-800 mt-4 text-lg flex items-center rounded p-2 w-full justify-center gap-2 hover:text-indigo-800"
+        class="logout-btn border-b border-zinc-800 mt-4 text-xl flex items-center rounded p-2 w-full justify-center gap-2 hover:text-indigo-800"
       >
-        <i class="icon-log-out logout-btn"></i>
+        <i class="icon-log-out logout-btn text-xl"></i>
         Logout
       </button>
-      {{#if user.email}}
-        <button
-          class="admin-panel-btn border-b border-zinc-800 mt-4 text-lg flex items-center rounded p-2 w-full justify-center gap-2 hover:text-indigo-800"
-        >
-          <i class="icon-log-out"></i>
-          AdminPanel
-        </button>
-      {{/if}}
+      <div class="flex items-center gap-2 text-xl hover:text-indigo-800 mt-3">
+        <i class="icon-arrow-left"></i>
+        <router-link
+          label="Back to HomePage"
+          class="text-zinc-800 hover:text-indigo-800"
+          href="${props.routes.home}"
+        ></router-link>
+      </div>
     </div>
   </div>
   <div class="col-span-10 bg-emerald-100 pt-20 px-20 text-2xl text-indigo-900">
@@ -30,22 +30,9 @@
       английском языке довольно просты и, как правило, ни у кого трудностей не
       вызывают. Но, к сожалению, из этого простого правила есть исключение. Этим
       исключением и есть неправильные глаголы.</p>
-    <p class="mb-8">Бывает так, что исключения встречаются довольно редко,
-      поэтому ими часто можно пренебречь (или, как минимум, отложить на потом).
-      Но это не наш случай. Потому что глаголы, которые находятся в списке
-      неправильных, очень часто употребляются в английской речи. Приведем только
-      некоторые из них: be (быть), do (делать), drink (пить), sleep (спать), eat
-      (есть) и другие. Как видите, это действительно глаголы, которые часто
-      используются в повседневной речи. Значит для того, чтобы грамотно
-      изъясняться на английском языке, вам придется выучить три формы
-      неправильных английских глаголов.</p>
-    <p class="mb-8">Всего в английском языке встречается более 300 irregular
-      verbs (неправильных глаголов). Но есть и хорошая новость - около 100
-      неправильных глаголов употребляются в 90% случаев. Таким образом, для
-      начинающих достаточно выучить основные неправильные глаголы в английском,
-      а затем постепенно пополнять свои знания другими, менее распространенными.</p>
     <p class="mb-4">
-      Глаголы можно изучать, отфильтровав иx в следующем порядке:
+      Глаголы можно изучать, отфильтровав иx на группы в следующем порядке в
+      следующем порядке:
     </p>
     <ul>
       <li>Изменение гласной по принципу: [ɪ] - [æ] - [ʌ] (ring - rang - rung)</li>

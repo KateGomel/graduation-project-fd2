@@ -15,10 +15,6 @@ export class SingUp extends Component {
       routes: ROUTES,
     });
     this.state = {
-      // errors: {
-      //   password: ,
-      //   repeatPassword: ,
-      // },
       isLoading: false,
     };
   }

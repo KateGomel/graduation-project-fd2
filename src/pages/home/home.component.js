@@ -8,7 +8,7 @@ import { useUserStore } from "../../hooks/useUserStore";
 export class HomePage extends Component {
   constructor() {
     super();
-    this.template = template({ routes: ROUTES });
+    this.template = template();
     this.state = {
       links: [
         {

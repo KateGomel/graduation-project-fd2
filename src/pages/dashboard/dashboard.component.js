@@ -10,6 +10,7 @@ import { useNavigate } from "../../hooks/useNavigate";
 export class Dashboard extends Component {
   constructor() {
     super();
+
     this.template = template({
       routes: ROUTES,
     });
@@ -17,7 +18,6 @@ export class Dashboard extends Component {
       isLoading: false,
       user: null,
       board: [],
-      isAdmin: {},
     };
   }
 
@@ -59,6 +59,11 @@ export class Dashboard extends Component {
       user: getUser(),
     });
   }
+
+  //  const { getUser } = useUserStore();
+  //   const user = getUser();
+  //   if (getUser()) {
+  //     if (user.email == "admin@email.by") {}}
 
   componentDidMount() {
     this.setUser();
