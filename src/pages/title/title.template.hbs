@@ -1,20 +1,24 @@
 <ui-loader loading="{{isLoading}}" class-name="bg-white/50 z-10"></ui-loader>
 <div class="grid grid-cols-12 h-screen w-screen font-serif animate-fade">
-  <div class="col-span-2 bg-emerald-300 pt-6 px-6 block">
+  <div class="col-span-1 bg-emerald-300 pt-6 px-6 block">
     <div class="flex flex-col items-center px-2">
       <a
         href="mailto:{{user.email}}"
-        class="text-xl text-indigo-800"
+        class="text-lg text-indigo-800"
       >{{user.email}}</a>
       <button
         class="logout-btn border-b border-zinc-800 mt-4 text-lg flex items-center rounded p-2 w-full justify-center gap-2 hover:text-indigo-800"
       >
-        <i class="icon-log-out logout-btn text-xl"></i>
+        <i class="icon-log-out logout-btn text-lg"></i>
         Logout
       </button>
+      <ui-button
+        caption="Create new word"
+        class-name="mt-10 mb-1 px-2 py-1 text-lg"
+      ></ui-button>
     </div>
   </div>
-  <div class="col-span-10 bg-emerald-100 pt-6 px-10 text-lg text-indigo-900">
+  <div class="col-span-11 bg-emerald-100 pt-6 px-10 text-lg text-indigo-900">
     <p class="mb-6 indent-3">Всего в английском языке встречается более 300
       irregular verbs (неправильных глаголов). Но есть и хорошая новость - около
       100 неправильных глаголов употребляются в 90% случаев. Таким образом, для
@@ -39,6 +43,44 @@
       <li>Группа 7. Все три формы разные</li>
     </ul>
 
+    <table class="border-separate w-full table-fixed">
+      <thead>
+        <tr>
+          <th class="border-b-2 border-zinc-400">Перевод</th>
+          <th class="border-b-2 border-zinc-400" colspan="2">Infinitive</th>
+          <th class="border-b-2 border-zinc-400" colspan="2">PastSimple</th>
+          <th class="border-b-2 border-zinc-400" colspan="2">PastParticiple</th>
+          <th class="border-b-2 border-zinc-400">
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <ui-td></ui-td>
+        <tr>
+          <td class="border border-zinc-400 py-2 px-4" name="translate"></td>
+          <td class="border border-zinc-400 py-2 px-4" name="infinitive"></td>
+          <td class="border border-zinc-400 py-2 px-4" name="infTrans"></td>
+          <td class="border border-zinc-400 py-2 px-4" name="pastSimple"></td>
+          <td class="border border-zinc-400 py-2 px-4" name="simTrans"></td>
+          <td
+            class="border border-zinc-400 py-2 px-4"
+            name="pastParticiple"
+          ></td>
+          <td class="border border-zinc-400 py-2 px-4" name="partTrans"></td>
+          <td
+            class="border border-zinc-400 flex justify-center items-center gap-4"
+          >
+            <ui-button
+              caption="Update"
+              class-name="mt-1 mb-1 px-2 py-1"
+            ></ui-button>
+            <ui-button
+              caption="Delete"
+              class-name="mt-1 mb-1 px-2 py-1"
+            ></ui-button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
-{{! Infinitive PastSimple PastParticiple }}
