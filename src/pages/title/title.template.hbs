@@ -1,33 +1,31 @@
 <ui-loader loading="{{isLoading}}" class-name="bg-white/50 z-10"></ui-loader>
-<div
-  class="grid grid-cols-12 bg-emerald-300 h-screen w-screen font-serif animate-fade"
->
-  <div class="col-span-2 bg-emerald-300 pt-8 px-8 block">
-    <div class="flex flex-col items-center px-2 mt-3">
+<div class="grid grid-cols-12 h-screen w-screen font-serif animate-fade">
+  <div class="col-span-2 bg-emerald-300 pt-6 px-6 block">
+    <div class="flex flex-col items-center px-2">
       <a
         href="mailto:{{user.email}}"
-        class="text-2xl text-indigo-800"
+        class="text-1xl text-indigo-800"
       >{{user.email}}</a>
       <button
-        class="logout-btn border-b border-zinc-800 mt-4 text-xl flex items-center rounded p-2 w-full justify-center gap-2 hover:text-indigo-800"
+        class="logout-btn border-b border-zinc-800 mt-4 text-1xl flex items-center rounded p-2 w-full justify-center gap-2 hover:text-indigo-800"
       >
         <i class="icon-log-out logout-btn text-xl"></i>
         Logout
       </button>
     </div>
   </div>
-  <div class="col-span-10 bg-emerald-100 pt-10 px-20 text-2xl text-indigo-900">
-    <p class="mb-8">Всего в английском языке встречается более 300 irregular
-      verbs (неправильных глаголов). Но есть и хорошая новость - около 100
-      неправильных глаголов употребляются в 90% случаев. Таким образом, для
+  <div class="col-span-10 bg-emerald-100 pt-6 px-10 text-1xl text-indigo-900">
+    <p class="mb-6 indent-3">Всего в английском языке встречается более 300
+      irregular verbs (неправильных глаголов). Но есть и хорошая новость - около
+      100 неправильных глаголов употребляются в 90% случаев. Таким образом, для
       начинающих достаточно выучить основные неправильные глаголы в английском,
       а затем постепенно пополнять свои знания другими, менее распространенными.</p>
-    <p class="mb-8">Глаголы можно редактировать, добавлять и удалять по своему
-      желанию.</p>
-    <p class="mb-4">
-      При изучении глаголы можно отфильтровав на группы в следующем порядке:
+    <p class="mb-6 indent-3">Глаголы можно редактировать, добавлять и удалять по
+      своему желанию.</p>
+    <p class="mb-2 indent-3">
+      При изучении глаголы можно отфильтровать на группы в следующем порядке:
     </p>
-    <ul>
+    <ul class="mb-6">
       <li>Группа 1. Изменение гласной по принципу: [ɪ] - [æ] - [ʌ] (ring - rang
         - rung)</li>
       <li>Группа 2. Изменение гласной во второй и третьей форме (dig - dug -
@@ -41,11 +39,6 @@
       <li>Группа 7. Все три формы разные</li>
     </ul>
 
-    <table>
-      <tr>
-
-      </tr>
-    </table>
-
   </div>
 </div>
+{{! Infinitive PastSimple PastParticiple }}
