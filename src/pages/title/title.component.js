@@ -1,4 +1,4 @@
-import template from "./dashboard.template.hbs";
+import template from "./title.template.hbs";
 import { ROUTES } from "../../constants/routes";
 import { Component } from "../../core/Component";
 import { useUserStore } from "../../hooks/useUserStore";
@@ -9,7 +9,7 @@ import { useNavigate } from "../../hooks/useNavigate";
 import { WORDS } from "../../constants/words";
 import { apiService } from "../../services/Api";
 
-export class Dashboard extends Component {
+export class Title extends Component {
   constructor() {
     super();
 
@@ -81,4 +81,4 @@ export class Dashboard extends Component {
   }
 }
 
-customElements.define("dashboard-page", Dashboard);
+customElements.define("title-page", Title);

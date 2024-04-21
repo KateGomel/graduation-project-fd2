@@ -31,7 +31,7 @@ export class HomePage extends Component {
         links: [
           {
             label: "Get started",
-            href: ROUTES.dashboard,
+            href: ROUTES.title,
           },
         ],
       });

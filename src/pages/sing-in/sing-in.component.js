@@ -36,7 +36,7 @@ export class SingIn extends Component {
       .then((data) => {
         setUser({ ...data.user });
         useToastNotification({ message: "Success!", type: TOAST_TYPE.success });
-        useNavigate(ROUTES.dashboard);
+        useNavigate(ROUTES.title);
       })
       .catch((error) => {
         useToastNotification({ message: error.message });
