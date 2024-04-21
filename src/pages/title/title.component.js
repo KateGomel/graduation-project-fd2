@@ -50,8 +50,11 @@ export class Title extends Component {
     if (target.closest(".logout-btn")) {
       this.logout();
     }
-    if (target.closest(".btn")) {
-      this.createdArrayWords();
+    if (target.closest(".update-word")) {
+      console.log(1);
+    }
+    if (target.closest(".delete-word")) {
+      console.log(2);
     }
   };
 

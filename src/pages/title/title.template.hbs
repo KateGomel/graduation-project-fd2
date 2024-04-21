@@ -14,7 +14,7 @@
       </button>
       <ui-button
         caption="Create new word"
-        class-name="mt-10 mb-1 px-2 py-1 text-lg"
+        class-name="mt-12 mb-1 px-2 py-1 text-lg"
       ></ui-button>
     </div>
   </div>
@@ -55,22 +55,29 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td class="border border-zinc-400 py-2 px-4" name="translate"></td>
-          <td class="border border-zinc-400 py-2 px-4" name="infinitive"></td>
-          <td class="border border-zinc-400 py-2 px-4" name="infTrans"></td>
-          <td class="border border-zinc-400 py-2 px-4" name="pastSimple"></td>
-          <td class="border border-zinc-400 py-2 px-4" name="simTrans"></td>
+        <tr data-id={{this.id}}>
+          <td class="border border-zinc-400 py-2 px-4">{{this.translate}}</td>
+          <td class="border border-zinc-400 py-2 px-4">{{this.infinitive}}</td>
+          <td class="border border-zinc-400 py-2 px-4">{{this.infTrans}}</td>
+          <td class="border border-zinc-400 py-2 px-4">{{this.pastSimple}}</td>
+          <td class="border border-zinc-400 py-2 px-4">{{this.simTrans}}</td>
           <td
             class="border border-zinc-400 py-2 px-4"
-            name="pastParticiple"
-          ></td>
+          >{{this.pastParticiple}}</td>
           <td class="border border-zinc-400 py-2 px-4" name="partTrans"></td>
           <td
             class="border border-zinc-400 flex justify-center items-center gap-4"
           >
-            <ui-button caption="Update" class-name="my-2 px-3 py-0"></ui-button>
-            <ui-button caption="Delete" class-name="my-2 px-3 py-0"></ui-button>
+            <ui-button
+              caption="Update"
+              class-name="update-word my-2 px-3 py-0"
+            ></ui-button>
+
+            <ui-button
+              caption="Delete"
+              class-name="delete-word my-2 px-3 py-0"
+            ></ui-button>
+
           </td>
         </tr>
       </tbody>
