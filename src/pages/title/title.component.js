@@ -36,7 +36,7 @@ export class Title extends Component {
       .then(() => {
         setUser(null);
         useToastNotification({ type: TOAST_TYPE.success, message: "Success!" });
-        useNavigate(ROUTES.signIn);
+        useNavigate(ROUTES.home);
       })
       .catch(({ message }) => {
         useToastNotification({ message });
