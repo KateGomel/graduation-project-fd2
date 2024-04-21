@@ -71,11 +71,6 @@ export class Dashboard extends Component {
     });
   }
 
-  //  const { getUser } = useUserStore();
-  //   const user = getUser();
-  //   if (getUser()) {
-  //     if (user.email == "admin@email.by") {}}
-
   componentDidMount() {
     this.setUser();
     this.addEventListener("click", this.onClick);
