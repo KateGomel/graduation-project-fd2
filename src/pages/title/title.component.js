@@ -61,6 +61,9 @@ export class Title extends Component {
     if (target.closest(".btn")) {
       this.createdArrayWords();
     }
+    if (target.closest(".toWord")) {
+      useNavigate(ROUTES.words);
+    }
   };
 
   setUser() {
