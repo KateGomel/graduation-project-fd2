@@ -17,7 +17,7 @@ export class Title extends Component {
     this.state = {
       isLoading: false,
       user: null,
-      board: [],
+      words: [],
     };
   }
 
@@ -50,11 +50,14 @@ export class Title extends Component {
     if (target.closest(".logout-btn")) {
       this.logout();
     }
-    if (target.closest(".update-word")) {
+    if (target.closest(".update-word-btn")) {
       console.log(1);
     }
-    if (target.closest(".delete-word")) {
+    if (target.closest(".delete-word-btn")) {
       console.log(2);
+    }
+    if (target.closest(".create-word-btn")) {
+      console.log(3);
     }
   };
 

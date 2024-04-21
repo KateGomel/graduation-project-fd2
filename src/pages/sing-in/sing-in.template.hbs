@@ -1,10 +1,13 @@
 <main
   class="flex bg-emerald-300 h-screen w-screen font-serif relative animate-fade"
 >
+
   <ui-loader loading="{{isLoading}}" class-name="bg-white/50 z-10"></ui-loader>
+
   <div
     class="flex flex-col bg-emerald-100 w-[36rem] h-[31rem] mx-auto mt-40 rounded-md p-7 shadow-2xl"
   >
+
     <div class="flex items-center gap-2 text-lg">
       <i class="icon-arrow-left text-indigo-600 hover:text-indigo-800"></i>
       <router-link
@@ -13,19 +16,30 @@
         href="${props.routes.home}"
       ></router-link>
     </div>
+
     <div class="mt-16">
+
       <h1 class="text-xl text-indigo-600">Sign in to your account</h1>
+
       <p class="text-slate-400 mt-3 text-md">Not a member?
         <router-link
           label="Sign Up"
           class="text-indigo-600 text-xl hover:text-indigo-800 ml-1"
           href="${props.routes.signUp}"
         ></router-link></p>
+
       <form class="flex flex-col gap-3 sign-in-form mt-12">
+
         <ui-input label="Email address" name="email" type="email"></ui-input>
+
         <ui-input label="Password" type="password" name="password"></ui-input>
+
         <ui-button caption="Sign In" class-name="block w-full"></ui-button>
+
       </form>
+
     </div>
+
   </div>
+
 </main>
