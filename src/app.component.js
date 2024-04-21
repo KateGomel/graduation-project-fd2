@@ -4,6 +4,10 @@ import { ROUTES } from "./constants/routes";
 
 import "./core/Router";
 
+import { authService } from "./services/Auth";
+import { useToastNotification } from "./hooks/useToastNotification";
+import { useUserStore } from "./hooks/useUserStore";
+
 import "./pages/home/home.component";
 import "./pages/not-found/not-found.component";
 import "./pages/sing-in/sing-in.component";
@@ -15,10 +19,7 @@ import "./components/input/input.component";
 import "./components/button/button.component";
 import "./components/loader/loader.component";
 import "./components/toast/toast.component";
-
-import { authService } from "./services/Auth";
-import { useToastNotification } from "./hooks/useToastNotification";
-import { useUserStore } from "./hooks/useUserStore";
+import "./components/modal/modal.component";
 
 export class App extends Component {
   constructor() {
