@@ -4,9 +4,7 @@ import template from "./input.template.hbs";
 export class Input extends Component {
   constructor() {
     super();
-    this.template = template({
-      error: this.getAttribute("error"),
-    });
+    this.template = template();
     this.state = {
       type: this.getAttribute("type") ?? "text",
       value: this.getAttribute("value") ?? "",
