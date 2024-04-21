@@ -9,7 +9,6 @@ import "./pages/not-found/not-found.component";
 import "./pages/sing-in/sing-in.component";
 import "./pages/sing-up/sing-up.component";
 import "./pages/dashboard/dashboard.component";
-import "./pages/board/board.component";
 
 import "./components/input/input.component";
 import "./components/button/button.component";
