@@ -1,4 +1,4 @@
-export const WORDS = [
+export const INITIAL_ARRAY = [
   {
     group: 1,
     translate: "начинать",
@@ -323,7 +323,7 @@ export const WORDS = [
     group: 7,
     translate: "идти",
     infinitive: "go",
-    infTrans: "[идти]",
+    infTrans: "[gɔ:]",
     pastSimple: "went",
     simTrans: "[went]",
     pastParticiple: "gone",

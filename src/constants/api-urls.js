@@ -1,4 +1,3 @@
 export const API_URLS = {
-  boards: "boards",
-  tasks: "tasks",
+  words: "words",
 };

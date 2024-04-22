@@ -7,6 +7,10 @@ import { useToastNotification } from "../../hooks/useToastNotification";
 import { TOAST_TYPE } from "../../constants/toast";
 import { useNavigate } from "../../hooks/useNavigate";
 import { useUserStore } from "../../hooks/useUserStore";
+// import { WORDS } from "../../constants/initialArray";
+// import { API_URLS } from "../../constants/api-urls";
+// import { apiService } from "../../services/Api";
+import { createInitialArray } from "../../api/words";
 
 export class SingUp extends Component {
   constructor() {
@@ -39,6 +43,7 @@ export class SingUp extends Component {
       .singUp(formData.email, formData.password)
       .then((data) => {
         setUser({ ...data.user });
+        createInitialArray();
         useToastNotification({ message: "Success!", type: TOAST_TYPE.success });
         useNavigate(ROUTES.title);
       })
