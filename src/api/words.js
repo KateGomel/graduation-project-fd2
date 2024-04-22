@@ -7,20 +7,19 @@ import { apiService } from "../services/Api";
 export const createInitialArray = () => {
   const { getUser } = useUserStore();
   const user = getUser();
-  console.log(user.uid);
   INITIAL_ARRAY.forEach((item) => {
     apiService.post(`${user.uid}/${API_URLS.words}`, item);
   });
 };
 
-export const createBoardApi = (userId, data) => {
+export const createWordApi = (userId, data) => {
   return apiService.post(`${userId}/${API_URLS.words}`, data);
 };
 
-export const getBoardsApi = (userId) => {
+export const getWordApi = (userId) => {
   return apiService.get(`${userId}/${API_URLS.words}`);
 };
 
-export const deleteBoardApi = (userId, boardId) => {
+export const deleteWordApi = (userId, boardId) => {
   return apiService.delete(`${userId}/${API_URLS.words}/${wordsId}`);
 };

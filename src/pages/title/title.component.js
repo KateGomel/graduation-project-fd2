@@ -28,6 +28,25 @@ export class Title extends Component {
     });
   };
 
+  // loadWords = () => {
+  //   if (this.state.user?.uid) {
+  //     this.toggleIsLoading();
+  //     getWordApi(this.state.user.uid)
+  //       .then(({ data }) => {
+  //         this.setState({
+  //           ...this.state,
+  //           words: data ? mapResponseApiData(data) : [],
+  //         });
+  //       })
+  //       .catch(({ message }) => {
+  //         useToastNotification({ message });
+  //       })
+  //       .finally(() => {
+  //         this.toggleIsLoading();
+  //       });
+  //   }
+  // };
+
   logout = () => {
     this.toggleIsLoading();
     const { setUser } = useUserStore();
@@ -71,6 +90,7 @@ export class Title extends Component {
 
   componentDidMount() {
     this.setUser();
+    // this.loadWords();
     this.addEventListener("click", this.onClick);
   }
 
