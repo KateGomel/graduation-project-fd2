@@ -28,25 +28,6 @@ export class Title extends Component {
     });
   };
 
-  // loadWords = () => {
-  //   if (this.state.user?.uid) {
-  //     this.toggleIsLoading();
-  //     getWordApi(this.state.user.uid)
-  //       .then(({ data }) => {
-  //         this.setState({
-  //           ...this.state,
-  //           words: data ? mapResponseApiData(data) : [],
-  //         });
-  //       })
-  //       .catch(({ message }) => {
-  //         useToastNotification({ message });
-  //       })
-  //       .finally(() => {
-  //         this.toggleIsLoading();
-  //       });
-  //   }
-  // };
-
   logout = () => {
     this.toggleIsLoading();
     const { setUser } = useUserStore();
@@ -65,18 +46,27 @@ export class Title extends Component {
       });
   };
 
+  openCreateWordModal() {
+    console.log("open");
+  }
+
   onClick = ({ target }) => {
-    if (target.closest(".logout-btn")) {
-      this.logout();
+    const logOut = target.closest(".logout-btn");
+    const deleteWord = target.closest(".delete-word-btn");
+    const updateWord = target.closest(".update-word-btn");
+    const createWord = target.closest(".create-word-btn");
+
+    if (logOut) {
+      return this.logout();
     }
-    if (target.closest(".update-word-btn")) {
-      console.log(1);
+    if (deleteWord) {
+      return console.log(2);
     }
-    if (target.closest(".delete-word-btn")) {
-      console.log(2);
+    if (updateWord) {
+      return console.log(1);
     }
-    if (target.closest(".create-word-btn")) {
-      console.log(3);
+    if (createWord) {
+      return this.openCreateWordModal();
     }
   };
 
@@ -90,7 +80,6 @@ export class Title extends Component {
 
   componentDidMount() {
     this.setUser();
-    // this.loadWords();
     this.addEventListener("click", this.onClick);
   }
 

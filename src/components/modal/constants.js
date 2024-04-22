@@ -6,5 +6,4 @@ export const INITIAL_STATE = {
   template: null,
   confirmation: null,
   onSuccess: null,
-  isError: false,
 };

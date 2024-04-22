@@ -7,9 +7,6 @@ import { useToastNotification } from "../../hooks/useToastNotification";
 import { TOAST_TYPE } from "../../constants/toast";
 import { useNavigate } from "../../hooks/useNavigate";
 import { useUserStore } from "../../hooks/useUserStore";
-// import { WORDS } from "../../constants/initialArray";
-// import { API_URLS } from "../../constants/api-urls";
-// import { apiService } from "../../services/Api";
 import { createInitialArray } from "../../api/words";
 
 export class SingUp extends Component {

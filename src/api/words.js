@@ -1,4 +1,3 @@
-import { log } from "handlebars";
 import { API_URLS } from "../constants/api-urls";
 import { INITIAL_ARRAY } from "../constants/initialArray";
 import { useUserStore } from "../hooks/useUserStore";
