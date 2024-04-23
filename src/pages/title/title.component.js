@@ -6,6 +6,9 @@ import { authService } from "../../services/Auth";
 import { useToastNotification } from "../../hooks/useToastNotification";
 import { TOAST_TYPE } from "../../constants/toast";
 import { useNavigate } from "../../hooks/useNavigate";
+import { useModal } from "../../hooks/useModal";
+import { createWordApi, getWordApi, deleteWordApi } from "../../api/words";
+import { extractFormData } from "../../utils/extractFormData";
 
 export class Title extends Component {
   constructor() {
@@ -47,7 +50,29 @@ export class Title extends Component {
   };
 
   openCreateWordModal() {
-    console.log("open");
+    useModal({
+      isOpen: true,
+      template: "ui-create-word-form",
+      onSuccess: (modal) => {
+        const form = modal.querySelector(".create-word-form");
+        const formData = extractFormData(form);
+        this.toggleIsLoading();
+        createWordApi(this.state.user.uid, { ...formData, group: 8 })
+          .then(({}) => {
+            useNavigate(`${ROUTES.title}`);
+            useToastNotification({
+              message: "Success!",
+              type: TOAST_TYPE.success,
+            });
+          })
+          .catch(({ message }) => {
+            useToastNotification({ message });
+          })
+          .finally(() => {
+            this.toggleIsLoading();
+          });
+      },
+    });
   }
 
   onClick = ({ target }) => {

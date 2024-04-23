@@ -1,8 +1,8 @@
-import { EVENT_TYPES } from "../../constants/eventTypes";
 import { Component } from "../../core/Component";
+import template from "./modal.template.hbs";
+import { EVENT_TYPES } from "../../constants/eventTypes";
 import { eventEmitter } from "../../core/EventEmitter";
 import { INITIAL_STATE } from "./constants";
-import template from "./modal.template.hbs";
 
 export class Modal extends Component {
   constructor() {
@@ -48,13 +48,11 @@ export class Modal extends Component {
 
   componentDidMount() {
     eventEmitter.on(EVENT_TYPES.modal, this.modalHandler);
-    eventEmitter.on("form:error", this.validateForm);
     this.addEventListener("click", this.onClick);
   }
 
   componentWillUnmount() {
     eventEmitter.off(EVENT_TYPES.modal, this.modalHandler);
-    eventEmitter.off("form:error", this.validateForm);
     this.removeEventListener("click", this.onClick);
   }
 }

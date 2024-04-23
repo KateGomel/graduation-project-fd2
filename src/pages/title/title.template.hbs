@@ -44,6 +44,7 @@
         grown)</li>
       <li>Группа 6. Все три формы одинаковые</li>
       <li>Группа 7. Все три формы разные</li>
+      <li>Группа 8. Слова, добавленные пользователями</li>
     </ul>
 
     <table class="border-separate w-full table-fixed">
@@ -59,20 +60,31 @@
       </thead>
       <tbody>
         {{#each words}}
+
           <tr data-id={{this.id}}>
+
             <td class="border border-zinc-400 py-2 px-4">{{this.translate}}</td>
+
             <td
               class="border border-zinc-400 py-2 px-4"
             >{{this.infinitive}}</td>
+
             <td class="border border-zinc-400 py-2 px-4">{{this.infTrans}}</td>
+
             <td
               class="border border-zinc-400 py-2 px-4"
             >{{this.pastSimple}}</td>
+
             <td class="border border-zinc-400 py-2 px-4">{{this.simTrans}}</td>
+
             <td
               class="border border-zinc-400 py-2 px-4"
             >{{this.pastParticiple}}</td>
-            <td class="border border-zinc-400 py-2 px-4" name="partTrans"></td>
+
+            <td class="border border-zinc-400 py-2 px-4" name="partTrans">
+              {{this.partTrans}}
+            </td>
+
             <td
               class="border border-zinc-400 flex justify-center items-center gap-4"
             >

@@ -20,6 +20,7 @@ import "./components/button/button.component";
 import "./components/loader/loader.component";
 import "./components/toast/toast.component";
 import "./components/modal/modal.component";
+import "./components/create-word-form/create-word-form.component";
 
 export class App extends Component {
   constructor() {
