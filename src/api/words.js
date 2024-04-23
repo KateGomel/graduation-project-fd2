@@ -19,6 +19,10 @@ export const getWordApi = (userId) => {
   return apiService.get(`${userId}/${API_URLS.words}`);
 };
 
-export const deleteWordApi = (userId, boardId) => {
+export const deleteWordApi = (userId, wordsId) => {
   return apiService.delete(`${userId}/${API_URLS.words}/${wordsId}`);
+};
+
+export const updateWordApi = (userId, wordsId) => {
+  return apiService.patch(`${userId}/${API_URLS.words}/${wordsId}`, data);
 };

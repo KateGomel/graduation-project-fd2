@@ -20,7 +20,9 @@
     </div>
   </div>
 
-  <div class="col-span-11 bg-emerald-100 pt-6 px-10 text-lg text-indigo-900">
+  <div
+    class="col-span-11 bg-emerald-100 pt-6 px-10 pb-40 text-lg text-indigo-900"
+  >
     <p class="mb-6 indent-3">Всего в английском языке встречается более 300
       irregular verbs (неправильных глаголов). Но есть и хорошая новость - около
       100 неправильных глаголов употребляются в 90% случаев. Таким образом, для
@@ -33,18 +35,15 @@
     </p>
 
     <ul class="mb-6">
-      <li>Группа 1. Изменение гласной по принципу: [ɪ] - [æ] - [ʌ] (ring - rang
-        - rung)</li>
-      <li>Группа 2. Изменение гласной во второй и третьей форме (dig - dug -
-        dug)</li>
-      <li>Группа 3. Вторая и третья форма заканчиваются на –ought или –aught
-        (teach - taught - taught)</li>
-      <li>Группа 4. Оглушение согласной в конце слова (spend - spent - spent)</li>
-      <li>Группа 5. Вторая и третья формы имеют окончания -ew –wn (grow - grew -
-        grown)</li>
-      <li>Группа 6. Все три формы одинаковые</li>
-      <li>Группа 7. Все три формы разные</li>
-      <li>Группа 8. Слова, добавленные пользователями</li>
+      <li>Изменение гласной по принципу: [ɪ] - [æ] - [ʌ] (ring - rang - rung)</li>
+      <li>Изменение гласной во второй и третьей форме (dig - dug - dug)</li>
+      <li>Вторая и третья форма заканчиваются на –ought или –aught (teach -
+        taught - taught)</li>
+      <li>Оглушение согласной в конце слова (spend - spent - spent)</li>
+      <li>Вторая и третья формы имеют окончания -ew –wn (grow - grew - grown)</li>
+      <li>Все три формы одинаковые</li>
+      <li>Все три формы разные</li>
+      <li>Слова, добавленные пользователями</li>
     </ul>
 
     <table class="border-separate w-full table-fixed">
@@ -63,7 +62,10 @@
 
           <tr data-id={{this.id}}>
 
-            <td class="border border-zinc-400 py-2 px-4">{{this.translate}}</td>
+            <td
+              data-translate={{this.translate}}
+              class="border border-zinc-400 py-2 px-4"
+            >{{this.translate}}</td>
 
             <td
               class="border border-zinc-400 py-2 px-4"
@@ -89,10 +91,12 @@
               class="border border-zinc-400 flex justify-center items-center gap-4"
             >
               <ui-button
+                data-id="{{this.id}}"
                 caption="Update"
                 class-name="update-word-btn my-2 px-3 py-0"
               ></ui-button>
               <ui-button
+                data-id="{{this.id}}"
                 caption="Delete"
                 class-name="delete-word-btn my-2 px-3 py-0"
               ></ui-button>

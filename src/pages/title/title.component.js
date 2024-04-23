@@ -7,8 +7,14 @@ import { useToastNotification } from "../../hooks/useToastNotification";
 import { TOAST_TYPE } from "../../constants/toast";
 import { useNavigate } from "../../hooks/useNavigate";
 import { useModal } from "../../hooks/useModal";
-import { createWordApi, getWordApi, deleteWordApi } from "../../api/words";
+import {
+  createWordApi,
+  getWordApi,
+  deleteWordApi,
+  updateWordApi,
+} from "../../api/words";
 import { extractFormData } from "../../utils/extractFormData";
+import { mapResponseApiData } from "../../utils/api";
 
 export class Title extends Component {
   constructor() {
@@ -49,6 +55,50 @@ export class Title extends Component {
       });
   };
 
+  loadAllWords = () => {
+    if (this.state.user?.uid) {
+      this.toggleIsLoading();
+      getWordApi(this.state.user.uid)
+        .then(({ data }) => {
+          this.setState({
+            ...this.state,
+            words: data ? mapResponseApiData(data) : [],
+          });
+        })
+        .catch(({ message }) => {
+          useToastNotification({ message });
+        })
+        .finally(() => {
+          this.toggleIsLoading();
+        });
+    }
+  };
+
+  openUpdateWordModal(id) {
+    useModal({
+      isOpen: true,
+      template: "ui-update-word-form",
+      // onSuccess: (modal) => {
+      //   const form = modal.querySelector(".update-word-form");
+      //   const formData = extractFormData(form);
+      //   updateWordApi(this.state.user.uid, id, formData)
+      //     .then(({}) => {
+      //       useNavigate(`${ROUTES.title}`);
+      //       useToastNotification({
+      //         message: "Success!",
+      //         type: TOAST_TYPE.success,
+      //       });
+      //     })
+      //     .catch(({ message }) => {
+      //       useToastNotification({ message });
+      //     })
+      //     .finally(() => {
+      //       this.toggleIsLoading();
+      //     });
+      // },
+    });
+  }
+
   openCreateWordModal() {
     useModal({
       isOpen: true,
@@ -77,20 +127,24 @@ export class Title extends Component {
 
   onClick = ({ target }) => {
     const logOut = target.closest(".logout-btn");
-    const deleteWord = target.closest(".delete-word-btn");
-    const updateWord = target.closest(".update-word-btn");
-    const createWord = target.closest(".create-word-btn");
+    const deleteWordBtn = target.closest(".delete-word-btn");
+    const updateWordBtn = target.closest(".update-word-btn");
+    const createWordBtn = target.closest(".create-word-btn");
 
     if (logOut) {
       return this.logout();
     }
-    if (deleteWord) {
+    if (deleteWordBtn) {
+      console.log(target.dataset.id);
       return console.log(2);
     }
-    if (updateWord) {
-      return console.log(1);
+    if (updateWordBtn) {
+      // return this.openUpdateWordModal({
+      //   id: updateWordBtn.dataset.id,
+      // });
+      console.log(target.dataset.id);
     }
-    if (createWord) {
+    if (createWordBtn) {
       return this.openCreateWordModal();
     }
   };
@@ -105,6 +159,7 @@ export class Title extends Component {
 
   componentDidMount() {
     this.setUser();
+    this.loadAllWords();
     this.addEventListener("click", this.onClick);
   }
 
