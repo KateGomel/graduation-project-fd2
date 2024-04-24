@@ -25,6 +25,7 @@ export class Title extends Component {
     });
     this.state = {
       isLoading: false,
+      isNoChecked: true,
       user: null,
       words: [],
     };
@@ -62,7 +63,7 @@ export class Title extends Component {
         .then(({ data }) => {
           this.setState({
             ...this.state,
-            words: data ? mapResponseApiData(data) : [],
+            words: mapResponseApiData(data),
           });
         })
         .catch(({ message }) => {
@@ -78,6 +79,8 @@ export class Title extends Component {
     useModal({
       isOpen: true,
       template: "ui-update-word-form",
+      title: "Update Word",
+      successCaption: "Update",
       onSuccess: (modal) => {
         const form = modal.querySelector(".update-word-form");
         const formData = extractFormData(form);
@@ -103,6 +106,8 @@ export class Title extends Component {
     useModal({
       isOpen: true,
       template: "ui-create-word-form",
+      title: "Create Word",
+      successCaption: "Create",
       onSuccess: (modal) => {
         const form = modal.querySelector(".create-word-form");
         const formData = extractFormData(form);
@@ -135,12 +140,12 @@ export class Title extends Component {
       return this.logout();
     }
     if (deleteWordBtn) {
-      console.log(target.dataset.id);
-      return console.log(2);
+      console.log(deleteWordBtn);
     }
     if (updateWordBtn) {
-      // return this.openUpdateWordModal();
-      console.log(updateWordBtn.dataset.id);
+      return this.openUpdateWordModal({
+        id: updateWordBtn.dataset.id,
+      });
     }
     if (createWordBtn) {
       return this.openCreateWordModal();

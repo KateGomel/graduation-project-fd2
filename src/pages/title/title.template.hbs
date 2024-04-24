@@ -13,11 +13,8 @@
         <i class="icon-log-out logout-btn text-lg"></i>
         Logout
       </button>
-      <ui-button
-        caption="Create new word"
-        class-name="create-word-btn mt-12 mb-1 px-2 py-1 text-lg"
-      ></ui-button>
-      <ui-button caption="Learned Words" class-name="block w-full"></ui-button>
+      <button class="create-word-btn rounded bg-indigo-600 text-white hover:bg-indigo-700  mt-12 mb-1 px-2 py-1 text-lg">Create new word</button>
+      <button class="to-checked-word-btn rounded bg-indigo-600 text-white hover:bg-indigo-700  mt-6 mb-1 px-2 py-1 text-lg">Learned Words</button>
     </div>
   </div>
 
@@ -33,22 +30,58 @@
       своему желанию. Выученые слова можно отметить и оно перетанет
       отображаться. Все отмеченные слова можно посмотреть в отдельной таблице</p>
     <p class="mb-2 indent-3">
-      При изучении глаголы можно отфильтровать по группам в следующем порядке:
-    </p>
+     
+    <div class="flex w-full justify-between">
+      <div class="w-1/2">
+        <p class="mb-2 indent-3">
+          При изучении глаголы можно отфильтровать по группам в следующем
+          порядке:
+        </p>
+        <label class="block items-center">
+          <input type="radio" name="sort" value="0" checked>
+          Все слова
+        </label>
+        <label class="block items-center">
+          <input type="radio" name="sort" value="1">
+          Изменение гласной по принципу: [ɪ] - [æ] - [ʌ] (ring - rang - rung)
+        </label>
+        <label class="block items-center">
+          <input type="radio" name="sort" value="2">
+          Изменение гласной во второй и третьей форме (dig - dug - dug)
+        </label>
+        <label class="block items-center">
+          <input type="radio" name="sort" value="3">
+          Вторая и третья форма заканчиваются на –ought или –aught (teach -
+        taught - taught)
+        </label>
+        
+      </div>
+      <div class="w-1/2 pt-2">
+        <label class="block items-center">
+          <input type="radio" name="sort" value="4">
+          Оглушение согласной в конце слова (spend - spent - spent)
+        </label>
+        <label class="block items-center">
+          <input type="radio" name="sort" value="5">
+          Вторая и третья формы имеют окончания -ew –wn (grow - grew - grown)
+        </label>
+        <label class="block items-center">
+          <input type="radio" name="sort" value="6">
+          Все три формы одинаковые
+        </label>
+        <label class="block items-center">
+          <input type="radio" name="sort" value="7">
+          Все три формы разные
+        </label>
+        <label class="block items-center">
+          <input type="radio" name="sort" value="8">
+          Слова, добавленные пользователями
+        </label>
+      </div>
+    </div>
 
-    <ul class="mb-6">
-      <li>Изменение гласной по принципу: [ɪ] - [æ] - [ʌ] (ring - rang - rung)</li>
-      <li>Изменение гласной во второй и третьей форме (dig - dug - dug)</li>
-      <li>Вторая и третья форма заканчиваются на –ought или –aught (teach -
-        taught - taught)</li>
-      <li>Оглушение согласной в конце слова (spend - spent - spent)</li>
-      <li>Вторая и третья формы имеют окончания -ew –wn (grow - grew - grown)</li>
-      <li>Все три формы одинаковые</li>
-      <li>Все три формы разные</li>
-      <li>Слова, добавленные пользователями</li>
-    </ul>
-
-    <div class="flex w-full justify-between justify-items-center gap-0.5">
+    
+    <div class=" mt-10 flex w-full justify-between justify-items-center gap-0.5">
       <div class="basis-1/8 p-2 font-semibold items-center">Перевод</div>
       <div class="basis-2/8 p-2 font-semibold items-center">Infinitive</div>
       <div class="basis-2/8 p-2 font-semibold items-center">PastSimple</div>
@@ -56,48 +89,54 @@
       <div class="basis-1/8 p-2 font-semibold items-center"></div>
     </div>
 
-    {{#each words}}
+    {{#if isNoChecked}}
 
-      <div
-        data-id="{{this.id}}"
-        class="flex w-full justify-between justify-items-center gap-0.5"
-      >
-        <div
-          class="basis-1/8 border border-zinc-400 p-2 items-center"
-        >{{this.translate}}</div>
-        <div
-          class="basis-1/8 border border-zinc-400 p-2 items-center"
-        >{{this.infinitive}}</div>
-        <div
-          class="basis-1/8 border border-zinc-400 p-2 items-center"
-        >{{this.infTrans}}</div>
-        <div
-          class="basis-1/8 border border-zinc-400 p-2 items-center"
-        >{{this.pastSimple}}</div>
-        <div
-          class="basis-1/8 border border-zinc-400 p-2 items-center"
-        >{{this.simTrans}}</div>
-        <div
-          class="basis-1/8 border border-zinc-400 p-2 items-center"
-        >{{this.pastParticiple}}</div>
-        <div class="basis-1/8 border border-zinc-400 p-2 items-center">
-          {{this.partTrans}}</div>
-        <div
-          class="flex gap-2 justify-center basis-1/8 border border-zinc-400 p-2 items-center"
-        >
-          <ui-button
-            data-id="{{this.id}}"
-            caption="Update"
-            class-name="update-word-btn my-2 px-3 py-0"
-          ></ui-button>
-          <ui-button
-            data-id="{{this.id}}"
-            caption="Delete"
-            class-name="delete-word-btn my-2 px-3 py-0"
-          ></ui-button>
+      {{#each words}}
+        <div data-id="{{this.id}}" class="flex w-full justify-between justify-items-center gap-0.5">
+          <div 
+            class="basis-1/8 border border-zinc-400 p-2 items-center"
+          >{{this.translate}}</div>
+          <div
+            class="basis-1/8 border border-zinc-400 p-2 items-center"
+          >{{this.infinitive}}</div>
+          <div
+            class="basis-1/8 border border-zinc-400 p-2 items-center"
+          >{{this.infTrans}}</div>
+          <div
+            class="basis-1/8 border border-zinc-400 p-2 items-center"
+          >{{this.pastSimple}}</div>
+          <div
+            class="basis-1/8 border border-zinc-400 p-2 items-center"
+          >{{this.simTrans}}</div>
+          <div
+            class="basis-1/8 border border-zinc-400 p-2 items-center"
+          >{{this.pastParticiple}}</div>
+          <div class="basis-1/8 border border-zinc-400 p-2 items-center">
+            {{this.partTrans}}</div>
+          <div
+            class="flex gap-2 justify-center basis-1/8 border border-zinc-400 p-2 items-center"
+          >
+
+
+
+
+          
+            <ui-button
+              data-id="{{this.id}}"
+              caption="Update"
+              class-name="update-word-btn my-2 px-3 py-0"
+            ></ui-button>
+            <ui-button
+              data-id="{{this.id}}"
+              caption="Delete"
+              class-name="delete-word-btn my-2 px-3 py-0"
+            ></ui-button>
+          </div>
         </div>
-      </div>
-    {{/each}}
+      {{/each}}
+
+    {{/if}}
 
   </div>
+
 </div>
