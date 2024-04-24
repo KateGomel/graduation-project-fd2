@@ -78,24 +78,24 @@ export class Title extends Component {
     useModal({
       isOpen: true,
       template: "ui-update-word-form",
-      // onSuccess: (modal) => {
-      //   const form = modal.querySelector(".update-word-form");
-      //   const formData = extractFormData(form);
-      //   updateWordApi(this.state.user.uid, id, formData)
-      //     .then(({}) => {
-      //       useNavigate(`${ROUTES.title}`);
-      //       useToastNotification({
-      //         message: "Success!",
-      //         type: TOAST_TYPE.success,
-      //       });
-      //     })
-      //     .catch(({ message }) => {
-      //       useToastNotification({ message });
-      //     })
-      //     .finally(() => {
-      //       this.toggleIsLoading();
-      //     });
-      // },
+      onSuccess: (modal) => {
+        const form = modal.querySelector(".update-word-form");
+        const formData = extractFormData(form);
+        updateWordApi(this.state.user.uid, id, formData)
+          .then(({}) => {
+            useNavigate(`${ROUTES.title}`);
+            useToastNotification({
+              message: "Success!",
+              type: TOAST_TYPE.success,
+            });
+          })
+          .catch(({ message }) => {
+            useToastNotification({ message });
+          })
+          .finally(() => {
+            this.toggleIsLoading();
+          });
+      },
     });
   }
 
@@ -139,10 +139,8 @@ export class Title extends Component {
       return console.log(2);
     }
     if (updateWordBtn) {
-      // return this.openUpdateWordModal({
-      //   id: updateWordBtn.dataset.id,
-      // });
-      console.log(target.dataset.id);
+      // return this.openUpdateWordModal();
+      console.log(updateWordBtn.dataset.id);
     }
     if (createWordBtn) {
       return this.openCreateWordModal();

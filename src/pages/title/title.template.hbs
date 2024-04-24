@@ -17,6 +17,7 @@
         caption="Create new word"
         class-name="create-word-btn mt-12 mb-1 px-2 py-1 text-lg"
       ></ui-button>
+      <ui-button caption="Learned Words" class-name="block w-full"></ui-button>
     </div>
   </div>
 
@@ -29,7 +30,8 @@
       начинающих достаточно выучить основные неправильные глаголы в английском,
       а затем постепенно пополнять свои знания другими, менее распространенными.</p>
     <p class="mb-6 indent-3">Глаголы можно редактировать, добавлять и удалять по
-      своему желанию.</p>
+      своему желанию. Выученые слова можно отметить и оно перетанет
+      отображаться. Все отмеченные слова можно посмотреть в отдельной таблице</p>
     <p class="mb-2 indent-3">
       При изучении глаголы можно отфильтровать по группам в следующем порядке:
     </p>
@@ -46,68 +48,56 @@
       <li>Слова, добавленные пользователями</li>
     </ul>
 
+    <div class="flex w-full justify-between justify-items-center gap-0.5">
+      <div class="basis-1/8 p-2 font-semibold items-center">Перевод</div>
+      <div class="basis-2/8 p-2 font-semibold items-center">Infinitive</div>
+      <div class="basis-2/8 p-2 font-semibold items-center">PastSimple</div>
+      <div class="basis-2/8 p-2 font-semibold items-center">PastParticiple</div>
+      <div class="basis-1/8 p-2 font-semibold items-center"></div>
+    </div>
 
-    <div></div>
+    {{#each words}}
 
-    <table class="border-separate w-full table-fixed">
-      <thead>
-        <tr>
-          <th class="border-b-2 border-zinc-400">Перевод</th>
-          <th class="border-b-2 border-zinc-400" colspan="2">Infinitive</th>
-          <th class="border-b-2 border-zinc-400" colspan="2">PastSimple</th>
-          <th class="border-b-2 border-zinc-400" colspan="2">PastParticiple</th>
-          <th class="border-b-2 border-zinc-400">
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#each words}}
-
-          <tr data-id={{this.id}}>
-
-            <td
-              data-translate={{this.translate}}
-              class="border border-zinc-400 py-2 px-4"
-            >{{this.translate}}</td>
-
-            <td
-              class="border border-zinc-400 py-2 px-4"
-            >{{this.infinitive}}</td>
-
-            <td class="border border-zinc-400 py-2 px-4">{{this.infTrans}}</td>
-
-            <td
-              class="border border-zinc-400 py-2 px-4"
-            >{{this.pastSimple}}</td>
-
-            <td class="border border-zinc-400 py-2 px-4">{{this.simTrans}}</td>
-
-            <td
-              class="border border-zinc-400 py-2 px-4"
-            >{{this.pastParticiple}}</td>
-
-            <td class="border border-zinc-400 py-2 px-4" name="partTrans">
-              {{this.partTrans}}
-            </td>
-
-            <td
-              class="border border-zinc-400 flex justify-center items-center gap-4"
-            >
-              <ui-button
-                data-id="{{this.id}}"
-                caption="Update"
-                class-name="update-word-btn my-2 px-3 py-0"
-              ></ui-button>
-              <ui-button
-                data-id="{{this.id}}"
-                caption="Delete"
-                class-name="delete-word-btn my-2 px-3 py-0"
-              ></ui-button>
-            </td>
-          </tr>
-        {{/each}}
-      </tbody>
-    </table>
+      <div
+        data-id="{{this.id}}"
+        class="flex w-full justify-between justify-items-center gap-0.5"
+      >
+        <div
+          class="basis-1/8 border border-zinc-400 p-2 items-center"
+        >{{this.translate}}</div>
+        <div
+          class="basis-1/8 border border-zinc-400 p-2 items-center"
+        >{{this.infinitive}}</div>
+        <div
+          class="basis-1/8 border border-zinc-400 p-2 items-center"
+        >{{this.infTrans}}</div>
+        <div
+          class="basis-1/8 border border-zinc-400 p-2 items-center"
+        >{{this.pastSimple}}</div>
+        <div
+          class="basis-1/8 border border-zinc-400 p-2 items-center"
+        >{{this.simTrans}}</div>
+        <div
+          class="basis-1/8 border border-zinc-400 p-2 items-center"
+        >{{this.pastParticiple}}</div>
+        <div class="basis-1/8 border border-zinc-400 p-2 items-center">
+          {{this.partTrans}}</div>
+        <div
+          class="flex gap-2 justify-center basis-1/8 border border-zinc-400 p-2 items-center"
+        >
+          <ui-button
+            data-id="{{this.id}}"
+            caption="Update"
+            class-name="update-word-btn my-2 px-3 py-0"
+          ></ui-button>
+          <ui-button
+            data-id="{{this.id}}"
+            caption="Delete"
+            class-name="delete-word-btn my-2 px-3 py-0"
+          ></ui-button>
+        </div>
+      </div>
+    {{/each}}
 
   </div>
 </div>
