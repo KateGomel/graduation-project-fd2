@@ -75,6 +75,32 @@ export class Title extends Component {
     }
   };
 
+  openDeleteWordModal(id) {
+    useModal({
+      isOpen: true,
+      title: "Update Word",
+      successCaption: "Delete",
+      confirmation: "Do you really want to delete",
+      onSuccess: () => {
+        this.toggleIsLoading();
+        deleteWordApi(this.state.user.uid, id)
+          .then(() => {
+            loadAllWords();
+            useToastNotification({
+              message: "Success!",
+              type: TOAST_TYPE.success,
+            });
+          })
+          .catch(({ message }) => {
+            useToastNotification({ message });
+          })
+          .finally(() => {
+            this.toggleIsLoading();
+          });
+      },
+    });
+  }
+
   openUpdateWordModal(id) {
     useModal({
       isOpen: true,
@@ -135,20 +161,33 @@ export class Title extends Component {
     const deleteWordBtn = target.closest(".delete-word-btn");
     const updateWordBtn = target.closest(".update-word-btn");
     const createWordBtn = target.closest(".create-word-btn");
+    const checkedWordBtn = target.closest(".checked-word-btn");
 
     if (logOut) {
       return this.logout();
     }
+
     if (deleteWordBtn) {
-      console.log(deleteWordBtn);
+      console.log(deleteWordBtn.dataset.id);
+      return this.openDeleteWordModal({
+        id: deleteWordBtn.dataset.id,
+      });
     }
+
     if (updateWordBtn) {
+      console.log(updateWordBtn.dataset.id);
       return this.openUpdateWordModal({
         id: updateWordBtn.dataset.id,
       });
     }
+
     if (createWordBtn) {
       return this.openCreateWordModal();
+    }
+
+    if (checkedWordBtn) {
+      console.log(checkedWordBtn);
+      // return this.toCheckedWords();
     }
   };
 
