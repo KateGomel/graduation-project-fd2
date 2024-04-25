@@ -180,13 +180,16 @@ export class Title extends Component {
     }
   };
 
-  checkedWords() {}
+  checkedWords(checkedWordBtn) {
+    console.log(checkedWordBtn);
+  }
 
   // sortWords() {}
 
-  onChecked() {
-    const checkedWordBtn = target.closest(".learned");
-    const checkedRadioBtn = target.closest(".radio-btn");
+  onChecked({ target }) {
+    const checkedWordBtn = target.closest(".checked");
+    // const checkedRadioBtn = target.closest(".radio-btn");
+
     if (checkedWordBtn) {
       this.checkedWords();
     }
