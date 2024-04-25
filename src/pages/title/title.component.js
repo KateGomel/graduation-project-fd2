@@ -80,7 +80,7 @@ export class Title extends Component {
       isOpen: true,
       title: "Update Word",
       successCaption: "Delete",
-      confirmation: "Do you really want to delete word?",
+      confirmation: "Do you really want to delete this word?",
       onSuccess: () => {
         this.toggleIsLoading();
         deleteWordApi(this.state.user.uid, id)
@@ -113,7 +113,6 @@ export class Title extends Component {
         const formData = extractFormData(form);
         updateWordApi(this.state.user.uid, data.id, formData)
           .then(({}) => {
-            useNavigate(`${ROUTES.title}`);
             useToastNotification({
               message: "Success!",
               type: TOAST_TYPE.success,
@@ -141,7 +140,6 @@ export class Title extends Component {
         this.toggleIsLoading();
         createWordApi(this.state.user.uid, { ...formData, group: 8 })
           .then(({}) => {
-            useNavigate(`${ROUTES.title}`);
             useToastNotification({
               message: "Success!",
               type: TOAST_TYPE.success,
@@ -215,11 +213,11 @@ export class Title extends Component {
     const checkedRadioBtn = target.closest(".radio-btn-input");
 
     if (checkedWordBtn) {
-      console.log(checkedWordBtn.checked, checkedWordBtn.dataset.id);
+      // console.log(checkedWordBtn.checked, checkedWordBtn.dataset.id);
       return this.onCheckedWords(checkedWordBtn.dataset.id);
     }
     if (checkedRadioBtn) {
-      console.log(checkedRadioBtn.value);
+      // console.log(checkedRadioBtn.value);
       return this.onSortWords();
     }
   }
