@@ -184,15 +184,21 @@ export class Title extends Component {
     }
   };
 
+  onCheckedWords() {}
+
+  onSortWords() {}
+
   onChecked({ target }) {
     const checkedWordBtn = target.closest(".checked");
     const checkedRadioBtn = target.closest(".radio-btn-input");
 
     if (checkedWordBtn) {
       console.log(checkedWordBtn.checked);
+      return this.onCheckedWords();
     }
     if (checkedRadioBtn) {
       console.log(checkedRadioBtn.value);
+      return this.onSortWords();
     }
   }
 
