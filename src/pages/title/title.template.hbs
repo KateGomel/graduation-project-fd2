@@ -41,19 +41,19 @@
           При изучении глаголы можно отфильтровать по группам в следующем
           порядке:
         </p>
-        <label class="block items-center">
+        <label class="radio-btn block items-center">
           <input type="radio" name="sort" value="0" checked />
           Все слова
         </label>
-        <label class="block items-center">
+        <label class="radio-btn block items-center">
           <input type="radio" name="sort" value="1" />
           Изменение гласной по принципу: [ɪ] - [æ] - [ʌ] (ring - rang - rung)
         </label>
-        <label class="block items-center">
+        <label class="radio-btn block items-center">
           <input type="radio" name="sort" value="2" />
           Изменение гласной во второй и третьей форме (dig - dug - dug)
         </label>
-        <label class="block items-center">
+        <label class="radio-btn block items-center">
           <input type="radio" name="sort" value="3" />
           Вторая и третья форма заканчиваются на –ought или –aught (teach -
           taught - taught)
@@ -61,23 +61,23 @@
 
       </div>
       <div class="w-1/2 pt-2">
-        <label class="block items-center">
+        <label class="radio-btn block items-center">
           <input type="radio" name="sort" value="4" />
           Оглушение согласной в конце слова (spend - spent - spent)
         </label>
-        <label class="block items-center">
+        <label class="radio-btn block items-center">
           <input type="radio" name="sort" value="5" />
           Вторая и третья формы имеют окончания -ew –wn (grow - grew - grown)
         </label>
-        <label class="block items-center">
+        <label class="radio-btn block items-center">
           <input type="radio" name="sort" value="6" />
           Все три формы одинаковые
         </label>
-        <label class="block items-center">
+        <label class="radio-btn block items-center">
           <input type="radio" name="sort" value="7" />
           Все три формы разные
         </label>
-        <label class="block items-center">
+        <label class="radio-btn block items-center">
           <input type="radio" name="sort" value="8" />
           Слова, добавленные пользователем
         </label>
@@ -95,59 +95,50 @@
     {{#if isNoChecked}}
 
       {{#each words}}
-        <div
-          data-id="{{this.id}}"
-          class="flex w-full justify-between justify-items-center gap-0.5"
-        >
+        <div class="flex w-full justify-between justify-items-center gap-0.5">
           <div
-            data-translate="{{this.translate}}"
             class="basis-1/8 border border-zinc-400 p-2 items-center"
           >{{this.translate}}</div>
 
           <div
-            data-infinitive="{{this.infinitive}}"
             class="basis-1/8 border border-zinc-400 p-2 items-center"
           >{{this.infinitive}}</div>
 
           <div
-            data-infTrans="{{this.infTrans}}"
             class="basis-1/8 border border-zinc-400 p-2 items-center"
           >{{this.infTrans}}</div>
 
           <div
-            data-pastSimple="{{this.pastSimple}}"
             class="basis-1/8 border border-zinc-400 p-2 items-center"
           >{{this.pastSimple}}</div>
 
           <div
-            data-simTrans="{{this.this.simTrans}}"
             class="basis-1/8 border border-zinc-400 p-2 items-center"
           >{{this.simTrans}}</div>
 
           <div
-            data-pastParticiple="{{this.pastParticiple}}"
             class="basis-1/8 border border-zinc-400 p-2 items-center"
           >{{this.pastParticiple}}</div>
 
-          <div
-            data-partTrans="{{this.partTrans}}"
-            class="basis-1/8 border border-zinc-400 p-2 items-center"
-          >
+          <div class="basis-1/8 border border-zinc-400 p-2 items-center">
             {{this.partTrans}}</div>
 
           <div
             class="flex gap-1 justify-around basis-1/8 border border-zinc-400 p-2 items-center"
           >
-            <input 
-            data-id="{{this.id}}"
-            data-infTrans="{{this.infTrans}}"
-            data-infinitive="{{this.infinitive}}"
-            data-pastSimple="{{this.pastSimple}}"
-            data-simTrans="{{this.this.simTrans}}"
-            data-pastParticiple="{{this.pastParticiple}}"
-            data-translate="{{this.translate}}"
-            data-partTrans="{{this.partTrans}}"
-            type="checkbox" name="learned" />
+            <input
+              data-id="{{this.id}}"
+              data-infTrans="{{this.infTrans}}"
+              data-infinitive="{{this.infinitive}}"
+              data-pastSimple="{{this.pastSimple}}"
+              data-simTrans="{{this.this.simTrans}}"
+              data-pastParticiple="{{this.pastParticiple}}"
+              data-translate="{{this.translate}}"
+              data-partTrans="{{this.partTrans}}"
+              type="checkbox"
+              name="learned"
+              class="learned"
+            />
 
             <button
               data-id="{{this.id}}"

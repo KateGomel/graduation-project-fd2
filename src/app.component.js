@@ -13,7 +13,6 @@ import "./pages/not-found/not-found.component";
 import "./pages/sing-in/sing-in.component";
 import "./pages/sing-up/sing-up.component";
 import "./pages/title/title.component";
-import "./pages/words/words.component";
 
 import "./components/input/input.component";
 import "./components/button/button.component";

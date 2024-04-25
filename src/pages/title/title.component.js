@@ -57,12 +57,10 @@ export class Title extends Component {
   };
 
   loadAllWords = () => {
-    console.log(this.state);
     if (this.state.user?.uid) {
       this.toggleIsLoading();
       getWordApi(this.state.user.uid)
         .then(({ data }) => {
-          console.log(data);
           this.setState({
             ...this.state,
             words: mapResponseApiData(data),
@@ -82,7 +80,7 @@ export class Title extends Component {
       isOpen: true,
       title: "Update Word",
       successCaption: "Delete",
-      confirmation: "Do you really want to delete",
+      confirmation: "Do you really want to delete word?",
       onSuccess: () => {
         this.toggleIsLoading();
         deleteWordApi(this.state.user.uid, id)
@@ -164,31 +162,38 @@ export class Title extends Component {
     const deleteWordBtn = target.closest(".delete-word-btn");
     const updateWordBtn = target.closest(".update-word-btn");
     const createWordBtn = target.closest(".create-word-btn");
-    const checkedWordBtn = target.closest(".checked-word-btn");
 
     if (logOut) {
       return this.logout();
     }
 
     if (deleteWordBtn) {
-      console.log(deleteWordBtn.dataset);
       return this.openDeleteWordModal(deleteWordBtn.dataset.id);
     }
 
     if (updateWordBtn) {
-      console.log(updateWordBtn.dataset);
       return this.openUpdateWordModal(updateWordBtn.dataset);
     }
 
     if (createWordBtn) {
       return this.openCreateWordModal();
     }
-
-    if (checkedWordBtn) {
-      console.log(checkedWordBtn);
-      // return this.toCheckedWords();
-    }
   };
+
+  checkedWords() {}
+
+  // sortWords() {}
+
+  onChecked() {
+    const checkedWordBtn = target.closest(".learned");
+    const checkedRadioBtn = target.closest(".radio-btn");
+    if (checkedWordBtn) {
+      this.checkedWords();
+    }
+    // if (checkedRadioBtn) {
+    //   this.sortWords();
+    // }
+  }
 
   setUser() {
     const { getUser } = useUserStore();
@@ -202,10 +207,12 @@ export class Title extends Component {
     this.setUser();
     this.loadAllWords();
     this.addEventListener("click", this.onClick);
+    this.addEventListener("change", this.onChecked);
   }
 
   componentWillUnmount() {
     this.removeEventListener("click", this.onClick);
+    this.addEventListener("change", this.onChecked);
   }
 }
 
