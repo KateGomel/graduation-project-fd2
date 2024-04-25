@@ -210,7 +210,7 @@ export class Title extends Component {
 
   onChecked({ target }) {
     const checkedWordBtn = target.closest(".checked");
-    const checkedRadioBtn = target.closest(".radio-btn-input");
+    const checkedRadioBtn = target.closest(".radio-input");
 
     if (checkedWordBtn) {
       // console.log(checkedWordBtn.checked, checkedWordBtn.dataset.id);
