@@ -26,12 +26,11 @@ export class SingUp extends Component {
       isLoading: !this.state.isLoading,
     });
   };
-
   registerUser = async (evt) => {
     evt.preventDefault();
     const formData = extractFormData(evt.target);
     if (formData.password != formData.repeatPassword) {
-      useToastNotification({ message: "Пароли должны совпадать" });
+      useToastNotification({ message: "Passwords must match" });
       return;
     }
     this.toggleIsLoading();
