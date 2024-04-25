@@ -57,10 +57,12 @@ export class Title extends Component {
   };
 
   loadAllWords = () => {
+    console.log(this.state);
     if (this.state.user?.uid) {
       this.toggleIsLoading();
       getWordApi(this.state.user.uid)
         .then(({ data }) => {
+          console.log(data);
           this.setState({
             ...this.state,
             words: mapResponseApiData(data),
@@ -111,7 +113,7 @@ export class Title extends Component {
       onSuccess: (modal) => {
         const form = modal.querySelector(".update-word-form");
         const formData = extractFormData(form);
-        updateWordApi(this.state.user.uid, data, formData)
+        updateWordApi(this.state.user.uid, data.id, formData)
           .then(({}) => {
             useNavigate(`${ROUTES.title}`);
             useToastNotification({

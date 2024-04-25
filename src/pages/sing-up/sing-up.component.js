@@ -27,7 +27,7 @@ export class SingUp extends Component {
     });
   };
 
-  registerUser = (evt) => {
+  registerUser = async (evt) => {
     evt.preventDefault();
     const formData = extractFormData(evt.target);
     if (formData.password != formData.repeatPassword) {
@@ -36,20 +36,18 @@ export class SingUp extends Component {
     }
     this.toggleIsLoading();
     const { setUser } = useUserStore();
-    authService
-      .singUp(formData.email, formData.password)
-      .then((data) => {
-        setUser({ ...data.user });
-        createInitialArray();
-        useToastNotification({ message: "Success!", type: TOAST_TYPE.success });
-        useNavigate(ROUTES.title);
-      })
-      .catch((error) => {
-        useToastNotification({ message: error.message });
-      })
-      .finally(() => {
-        this.toggleIsLoading();
-      });
+    try {
+      const data = await authService.singUp(formData.email, formData.password);
+      const dataWords = await Promise.all(createInitialArray(data.user.uid));
+
+      setUser({ ...data.user });
+      useToastNotification({ message: "Success!", type: TOAST_TYPE.success });
+      useNavigate(ROUTES.title);
+    } catch (error) {
+      useToastNotification({ message: error.message });
+    } finally {
+      this.toggleIsLoading();
+    }
   };
 
   componentDidMount() {

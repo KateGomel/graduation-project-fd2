@@ -1,13 +1,10 @@
 import { API_URLS } from "../constants/api-urls";
 import { INITIAL_ARRAY } from "../constants/initialArray";
-import { useUserStore } from "../hooks/useUserStore";
 import { apiService } from "../services/Api";
 
-export const createInitialArray = () => {
-  const { getUser } = useUserStore();
-  const user = getUser();
-  INITIAL_ARRAY.forEach((item) => {
-    apiService.post(`${user.uid}/${API_URLS.title}`, item);
+export const createInitialArray = (uid) => {
+  return INITIAL_ARRAY.map((item) => {
+    return apiService.post(`${uid}/${API_URLS.title}`, item);
   });
 };
 
