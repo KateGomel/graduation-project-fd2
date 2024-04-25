@@ -162,6 +162,7 @@ export class Title extends Component {
     const deleteWordBtn = target.closest(".delete-word-btn");
     const updateWordBtn = target.closest(".update-word-btn");
     const createWordBtn = target.closest(".create-word-btn");
+    const checkedWordsTable = target.closest(".checked-word-btn");
 
     if (logOut) {
       return this.logout();
@@ -178,24 +179,29 @@ export class Title extends Component {
     if (createWordBtn) {
       return this.openCreateWordModal();
     }
+    if (checkedWordsTable) {
+      return this.checkedWordsTable();
+    }
   };
 
   checkedWords(checkedWordBtn) {
     console.log(checkedWordBtn);
   }
 
-  // sortWords() {}
+  sortWords(sortWords) {
+    console.log(sortWords);
+  }
 
   onChecked({ target }) {
     const checkedWordBtn = target.closest(".checked");
-    // const checkedRadioBtn = target.closest(".radio-btn");
+    const checkedRadioBtn = target.closest(".radio-btn");
 
     if (checkedWordBtn) {
-      this.checkedWords();
+      return this.checkedWords();
     }
-    // if (checkedRadioBtn) {
-    //   this.sortWords();
-    // }
+    if (checkedRadioBtn) {
+      return this.sortWords();
+    }
   }
 
   setUser() {
