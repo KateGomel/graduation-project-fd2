@@ -184,17 +184,39 @@ export class Title extends Component {
     }
   };
 
-  onCheckedWords() {}
+  onCheckedWords(id) {
+    getWordApi(this.state.user.uid).then(() => {
+      const { words } = this.state;
+      console.log(words, id);
+    });
+    // .catch(({ message }) => {
+    //   useToastNotification({ message });
+    // })
+    // .finally(() => {
+    //   this.toggleIsLoading();
+    // });
+  }
 
-  onSortWords() {}
+  onSortWords() {
+    getWordApi(this.state.user.uid).then(() => {
+      const { words } = this.state;
+      console.log(words);
+    });
+    // .catch(({ message }) => {
+    //   useToastNotification({ message });
+    // })
+    // .finally(() => {
+    //   this.toggleIsLoading();
+    // });
+  }
 
   onChecked({ target }) {
     const checkedWordBtn = target.closest(".checked");
     const checkedRadioBtn = target.closest(".radio-btn-input");
 
     if (checkedWordBtn) {
-      console.log(checkedWordBtn.checked);
-      return this.onCheckedWords();
+      console.log(checkedWordBtn.checked, checkedWordBtn.dataset.id);
+      return this.onCheckedWords(checkedWordBtn.dataset.id);
     }
     if (checkedRadioBtn) {
       console.log(checkedRadioBtn.value);
