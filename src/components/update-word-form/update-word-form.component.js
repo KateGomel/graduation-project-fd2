@@ -5,11 +5,30 @@ export class UpdateWordForm extends Component {
   constructor() {
     super();
 
-    this.state = {};
+    this.state = {
+      id: "",
+      translate: "",
+      infinitive: "",
+      inftrans: "",
+      pastsimple: "",
+      simtrans: "",
+      pastparticiple: "",
+      parttrans: "",
+    };
     this.template = template();
   }
+  init() {
+    const data = {};
+    this.getAttributeNames().forEach((name) => {
+      data[name] = this.getAttribute(name);
+    });
 
-  componentDidMount() {}
+    this.setState({ ...this.state, ...data });
+  }
+
+  componentDidMount() {
+    this.init();
+  }
 
   componentWillUnmount() {}
 }

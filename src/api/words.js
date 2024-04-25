@@ -7,22 +7,22 @@ export const createInitialArray = () => {
   const { getUser } = useUserStore();
   const user = getUser();
   INITIAL_ARRAY.forEach((item) => {
-    apiService.post(`${user.uid}/${API_URLS.words}`, item);
+    apiService.post(`${user.uid}/${API_URLS.title}`, item);
   });
 };
 
 export const createWordApi = (userId, data) => {
-  return apiService.post(`${userId}/${API_URLS.words}`, data);
+  return apiService.post(`${userId}/${API_URLS.title}`, data);
 };
 
 export const getWordApi = (userId) => {
-  return apiService.get(`${userId}/${API_URLS.words}`);
+  return apiService.get(`${userId}/${API_URLS.title}`);
 };
 
 export const deleteWordApi = (userId, wordsId) => {
-  return apiService.delete(`${userId}/${API_URLS.words}/${wordsId}`);
+  return apiService.delete(`${userId}/${API_URLS.title}/${wordsId}`);
 };
 
-export const updateWordApi = (userId, wordsId) => {
-  return apiService.patch(`${userId}/${API_URLS.words}/${wordsId}`, data);
+export const updateWordApi = (userId, wordsId, data) => {
+  return apiService.patch(`${userId}/${API_URLS.title}/${wordsId}`, data);
 };

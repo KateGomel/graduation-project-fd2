@@ -12,8 +12,13 @@ export class Modal extends Component {
     this.state = INITIAL_STATE;
   }
 
-  appendTemplate = (template) => {
+  appendTemplate = (template, data) => {
     const tmp = document.createElement(template);
+    if (data) {
+      Object.keys(data).forEach((key) => {
+        tmp.setAttribute(key, data[key]);
+      });
+    }
     this.querySelector(".modal-body").append(tmp);
   };
 
@@ -24,7 +29,7 @@ export class Modal extends Component {
     });
 
     if (detail.template) {
-      this.appendTemplate(detail.template);
+      this.appendTemplate(detail.template, detail.data);
     }
   };
 

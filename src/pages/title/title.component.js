@@ -85,7 +85,7 @@ export class Title extends Component {
         this.toggleIsLoading();
         deleteWordApi(this.state.user.uid, id)
           .then(() => {
-            loadAllWords();
+            this.loadAllWords();
             useToastNotification({
               message: "Success!",
               type: TOAST_TYPE.success,
@@ -101,16 +101,17 @@ export class Title extends Component {
     });
   }
 
-  openUpdateWordModal(id) {
+  openUpdateWordModal(data) {
     useModal({
       isOpen: true,
       template: "ui-update-word-form",
       title: "Update Word",
       successCaption: "Update",
+      data,
       onSuccess: (modal) => {
         const form = modal.querySelector(".update-word-form");
         const formData = extractFormData(form);
-        updateWordApi(this.state.user.uid, id, formData)
+        updateWordApi(this.state.user.uid, data, formData)
           .then(({}) => {
             useNavigate(`${ROUTES.title}`);
             useToastNotification({
@@ -168,17 +169,13 @@ export class Title extends Component {
     }
 
     if (deleteWordBtn) {
-      console.log(deleteWordBtn.dataset.id);
-      return this.openDeleteWordModal({
-        id: deleteWordBtn.dataset.id,
-      });
+      console.log(deleteWordBtn.dataset);
+      return this.openDeleteWordModal(deleteWordBtn.dataset.id);
     }
 
     if (updateWordBtn) {
-      console.log(updateWordBtn.dataset.id);
-      return this.openUpdateWordModal({
-        id: updateWordBtn.dataset.id,
-      });
+      console.log(updateWordBtn.dataset);
+      return this.openUpdateWordModal(updateWordBtn.dataset);
     }
 
     if (createWordBtn) {
