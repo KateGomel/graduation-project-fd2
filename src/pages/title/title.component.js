@@ -184,21 +184,18 @@ export class Title extends Component {
     }
   };
 
-  checkedWords(checkedWordBtn) {}
-
-  sortWords(sortWords) {}
+  // checkedWords(checkedWordBtn) {}
 
   onChecked({ target }) {
-    const checkedWordBtn = target.closest(".checked");
-    const checkedRadioBtn = target.closest(".radio-btn");
+    // const checkedWordBtn = target.closest(".checked");
+    const checkedRadioBtn = target.closest(".radio-btn-input");
 
-    if (checkedWordBtn) {
-      console.log(checkedWordBtn.value);
-      return this.checkedWords();
-    }
+    // if (checkedWordBtn) {
+    //   console.log(checkedWordBtn.value);
+    //   return this.checkedWords();
+    // }
     if (checkedRadioBtn) {
-      console.log(checkedRadioBtn.value);
-      return this.sortWords();
+      console.log(checkedRadioBtn.checked, checkedRadioBtn.value);
     }
   }
 
