@@ -203,8 +203,18 @@ export class Title extends Component {
   onSortWords(groupWord) {
     console.log(groupWord);
     getWordApi(this.state.user.uid).then(() => {
-      const { words } = this.state;
-      console.log(words[2].group);
+      let { words } = this.state;
+      words = words.filter((item) => {
+        if (item.group == groupWord) {
+          return item;
+        }
+      });
+      console.log(words);
+      this.setState({
+        ...this.state,
+        words: words,
+      });
+      console.log(this.state);
     });
     // .catch(({ message }) => {
     //   useToastNotification({ message });
