@@ -90,6 +90,7 @@ export class Title extends Component {
               message: "Success!",
               type: TOAST_TYPE.success,
             });
+            useNavigate(ROUTES.title);
           })
           .catch(({ message }) => {
             useToastNotification({ message });
@@ -117,6 +118,7 @@ export class Title extends Component {
               message: "Success!",
               type: TOAST_TYPE.success,
             });
+            useNavigate(ROUTES.title);
             this.loadAllWords();
           })
           .catch(({ message }) => {
@@ -145,6 +147,7 @@ export class Title extends Component {
               message: "Success!",
               type: TOAST_TYPE.success,
             });
+            useNavigate(ROUTES.title);
             this.loadAllWords();
           })
           .catch(({ message }) => {
@@ -201,7 +204,7 @@ export class Title extends Component {
     console.log(groupWord);
     getWordApi(this.state.user.uid).then(() => {
       const { words } = this.state;
-      console.log(words);
+      console.log(words[2].group);
     });
     // .catch(({ message }) => {
     //   useToastNotification({ message });
