@@ -38,7 +38,6 @@ export class SingUp extends Component {
     try {
       const data = await authService.singUp(formData.email, formData.password);
       const dataWords = await Promise.all(createInitialArray(data.user.uid));
-
       setUser({ ...data.user });
       useToastNotification({ message: "Success!", type: TOAST_TYPE.success });
       useNavigate(ROUTES.title);
