@@ -117,6 +117,7 @@ export class Title extends Component {
               message: "Success!",
               type: TOAST_TYPE.success,
             });
+            this.loadAllWords();
           })
           .catch(({ message }) => {
             useToastNotification({ message });
@@ -144,6 +145,7 @@ export class Title extends Component {
               message: "Success!",
               type: TOAST_TYPE.success,
             });
+            this.loadAllWords();
           })
           .catch(({ message }) => {
             useToastNotification({ message });
@@ -195,10 +197,11 @@ export class Title extends Component {
     // });
   }
 
-  onSortWords() {
+  onSortWords(groupWord) {
+    console.log(groupWord);
     getWordApi(this.state.user.uid).then(() => {
       const { words } = this.state;
-      console.log(words);
+      console.log(words.);
     });
     // .catch(({ message }) => {
     //   useToastNotification({ message });
@@ -217,8 +220,9 @@ export class Title extends Component {
       return this.onCheckedWords(checkedWordBtn.dataset.id);
     }
     if (checkedRadioBtn) {
-      // console.log(checkedRadioBtn.value);
-      return this.onSortWords();
+      const groupWord = checkedRadioBtn.value;
+
+      return this.onSortWords(groupWord);
     }
   }
 
