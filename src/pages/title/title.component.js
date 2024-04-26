@@ -201,7 +201,7 @@ export class Title extends Component {
     console.log(groupWord);
     getWordApi(this.state.user.uid).then(() => {
       const { words } = this.state;
-      console.log(words.);
+      console.log(words);
     });
     // .catch(({ message }) => {
     //   useToastNotification({ message });
