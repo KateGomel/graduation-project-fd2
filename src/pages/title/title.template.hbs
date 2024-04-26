@@ -13,11 +13,13 @@
         <i class="icon-log-out logout-btn text-lg"></i>
         Logout
       </button>
+
       <button
-        class="create-word-btn rounded bg-indigo-600 text-white hover:bg-indigo-700 mt-12 mb-1 px-2 py-1 text-lg"
+        class="checked-word-btn rounded bg-indigo-600 text-white hover:bg-indigo-700 mt-10 px-2 py-1 text-lg"
       >Create new word</button>
+
       <button
-        class="checked-word-btn rounded bg-indigo-600 text-white hover:bg-indigo-700 mt-6 mb-1 px-2 py-1 text-lg"
+        class="checked-word-btn rounded bg-indigo-600 text-white hover:bg-indigo-700 mt-10 px-2 py-1 text-lg"
       >Learned Words</button>
     </div>
   </div>
@@ -42,19 +44,25 @@
           порядке:
         </p>
         <label class="radio-btn block items-center">
-          <input type="radio" class="radio-btn-input" name="sort" value="0" checked />
+          <input
+            type="radio"
+            class="radio-input"
+            name="sort"
+            value="0"
+            checked
+          />
           Все слова
         </label>
         <label class="radio-btn block items-center">
-          <input type="radio" class="radio-btn-input" name="sort" value="1" />
+          <input type="radio" class="radio-input" name="sort" value="1" />
           Изменение гласной по принципу: [ɪ] - [æ] - [ʌ] (ring - rang - rung)
         </label>
         <label class="radio-btn block items-center">
-          <input type="radio" class="radio-btn-input" name="sort" value="2" />
+          <input type="radio" class="radio-input" name="sort" value="2" />
           Изменение гласной во второй и третьей форме (dig - dug - dug)
         </label>
-        <label class="radio-btn class="radio-btn-input" block items-center">
-          <input type="radio" name="sort" value="3" />
+        <label class="radio-btn block items-center">
+          <input type="radio" class="radio-input" name="sort" value="3" />
           Вторая и третья форма заканчиваются на –ought или –aught (teach -
           taught - taught)
         </label>
@@ -62,34 +70,34 @@
       </div>
       <div class="w-1/2 pt-2">
         <label class="radio-btn block items-center">
-          <input type="radio" class="radio-btn-input" name="sort" value="4" />
+          <input type="radio" class="radio-input" name="sort" value="4" />
           Оглушение согласной в конце слова (spend - spent - spent)
         </label>
         <label class="radio-btn block items-center">
-          <input type="radio" class="radio-btn-input" name="sort" value="5" />
+          <input type="radio" class="radio-input" name="sort" value="5" />
           Вторая и третья формы имеют окончания -ew –wn (grow - grew - grown)
         </label>
         <label class="radio-btn block items-center">
-          <input type="radio" class="radio-btn-input" name="sort" value="6" />
+          <input type="radio" class="radio-input" name="sort" value="6" />
           Все три формы одинаковые
         </label>
         <label class="radio-btn block items-center">
-          <input type="radio" class="radio-btn-input" name="sort" value="7" />
+          <input type="radio" class="radio-input" name="sort" value="7" />
           Все три формы разные
         </label>
         <label class="radio-btn block items-center">
-          <input type="radio" class="radio-btn-input" name="sort" value="8" />
+          <input type="radio" class="radio-input" name="sort" value="8" />
           Слова, добавленные пользователем
         </label>
       </div>
     </div>
 
     <div class="mt-10 flex w-full justify-between justify-items-center gap-0.5">
-      <div class="basis-1/8 p-2 font-semibold items-center">Перевод</div>
-      <div class="basis-2/8 p-2 font-semibold items-center">Infinitive</div>
-      <div class="basis-2/8 p-2 font-semibold items-center">PastSimple</div>
-      <div class="basis-2/8 p-2 font-semibold items-center">PastParticiple</div>
-      <div class="basis-1/8 p-2 font-semibold items-center"></div>
+      <div class="basis-1/8 p-2 font-semibold">Перевод</div>
+      <div class="basis-2/8 p-2 font-semibold">Infinitive</div>
+      <div class="basis-2/8 p-2 font-semibold">PastSimple</div>
+      <div class="basis-2/8 p-2 font-semibold">PastParticiple</div>
+      <div class="basis-1/8 p-2 flex justify-center"></div>
     </div>
 
     {{#if isNoChecked}}
@@ -130,7 +138,7 @@
               data-id="{{this.id}}"
               type="checkbox"
               name="checked"
-              class="checked"                   
+              class="checked"
             />
 
             <button
@@ -146,13 +154,6 @@
             >Update</button>
             <button
               data-id="{{this.id}}"
-              data-translate="{{this.translate}}"
-              data-infinitive="{{this.infinitive}}"
-              data-infTrans="{{this.infTrans}}"
-              data-pastSimple="{{this.pastSimple}}"
-              data-simTrans="{{this.this.simTrans}}"
-              data-pastParticiple="{{this.pastParticiple}}"
-              data-partTrans="{{this.partTrans}}"
               class="delete-word-btn rounded bg-indigo-600 text-white hover:bg-indigo-700 my-2 px-3 text-lg"
             >Delete</button>
 

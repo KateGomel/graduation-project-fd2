@@ -5,6 +5,5 @@ export const INITIAL_STATE = {
   rejectCaption: "Cancel",
   template: null,
   confirmation: null,
-  placeholder: "",
   onSuccess: null,
 };

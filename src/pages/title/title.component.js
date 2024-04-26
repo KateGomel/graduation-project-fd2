@@ -80,7 +80,7 @@ export class Title extends Component {
       isOpen: true,
       title: "Update Word",
       successCaption: "Delete",
-      confirmation: "Do you really want to delete word?",
+      confirmation: "Do you really want to delete this word?",
       onSuccess: () => {
         this.toggleIsLoading();
         deleteWordApi(this.state.user.uid, id)
@@ -113,11 +113,11 @@ export class Title extends Component {
         const formData = extractFormData(form);
         updateWordApi(this.state.user.uid, data.id, formData)
           .then(({}) => {
-            useNavigate(`${ROUTES.title}`);
             useToastNotification({
               message: "Success!",
               type: TOAST_TYPE.success,
             });
+            this.loadAllWords();
           })
           .catch(({ message }) => {
             useToastNotification({ message });
@@ -141,11 +141,11 @@ export class Title extends Component {
         this.toggleIsLoading();
         createWordApi(this.state.user.uid, { ...formData, group: 8 })
           .then(({}) => {
-            useNavigate(`${ROUTES.title}`);
             useToastNotification({
               message: "Success!",
               type: TOAST_TYPE.success,
             });
+            this.loadAllWords();
           })
           .catch(({ message }) => {
             useToastNotification({ message });
@@ -184,15 +184,45 @@ export class Title extends Component {
     }
   };
 
+  onCheckedWords(id) {
+    getWordApi(this.state.user.uid).then(() => {
+      const { words } = this.state;
+      console.log(words, id);
+    });
+    // .catch(({ message }) => {
+    //   useToastNotification({ message });
+    // })
+    // .finally(() => {
+    //   this.toggleIsLoading();
+    // });
+  }
+
+  onSortWords(groupWord) {
+    console.log(groupWord);
+    getWordApi(this.state.user.uid).then(() => {
+      const { words } = this.state;
+      console.log(words.);
+    });
+    // .catch(({ message }) => {
+    //   useToastNotification({ message });
+    // })
+    // .finally(() => {
+    //   this.toggleIsLoading();
+    // });
+  }
+
   onChecked({ target }) {
     const checkedWordBtn = target.closest(".checked");
-    const checkedRadioBtn = target.closest(".radio-btn-input");
+    const checkedRadioBtn = target.closest(".radio-input");
 
     if (checkedWordBtn) {
-      console.log(checkedWordBtn.checked);
+      // console.log(checkedWordBtn.checked, checkedWordBtn.dataset.id);
+      return this.onCheckedWords(checkedWordBtn.dataset.id);
     }
     if (checkedRadioBtn) {
-      console.log(checkedRadioBtn.value);
+      const groupWord = checkedRadioBtn.value;
+
+      return this.onSortWords(groupWord);
     }
   }
 
