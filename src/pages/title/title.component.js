@@ -160,6 +160,10 @@ export class Title extends Component {
     });
   }
 
+  toCheckedWords() {
+    console.log("ok");
+  }
+
   onClick = ({ target }) => {
     const logOut = target.closest(".logout-btn");
     const deleteWordBtn = target.closest(".delete-word-btn");
@@ -186,7 +190,7 @@ export class Title extends Component {
       return this.openCreateWordModal();
     }
     if (checkedWordsTable) {
-      return this.checkedWordsTable();
+      return this.toCheckedWords();
     }
   };
 
