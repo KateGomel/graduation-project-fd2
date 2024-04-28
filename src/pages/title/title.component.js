@@ -75,12 +75,12 @@ export class Title extends Component {
     }
   };
 
-  openDeleteWordModal(id) {
+  openDeleteWordModal({ id, translate }) {
     useModal({
       isOpen: true,
       title: "Update Word",
       successCaption: "Delete",
-      confirmation: "Do you really want to delete this word?",
+      confirmation: `Do you really want to delete "${translate}"?`,
       onSuccess: () => {
         this.toggleIsLoading();
         deleteWordApi(this.state.user.uid, id)
@@ -172,7 +172,10 @@ export class Title extends Component {
     }
 
     if (deleteWordBtn) {
-      return this.openDeleteWordModal(deleteWordBtn.dataset.id);
+      return this.openDeleteWordModal({
+        id: deleteWordBtn.dataset.id,
+        translate: deleteWordBtn.dataset.translate,
+      });
     }
 
     if (updateWordBtn) {
