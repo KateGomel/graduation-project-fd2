@@ -198,9 +198,9 @@ export class Title extends Component {
   onCheckedWords({ id, translate }) {
     useModal({
       isOpen: true,
-      title: "Checked Word",
-      successCaption: "Checked",
-      confirmation: `Do you really want to checked as learned word "${translate}"?`,
+      title: "Marked Word",
+      successCaption: "Mark",
+      confirmation: `Do you really want to mark as learned word "${translate}"?`,
       onSuccess: () => {
         this.toggleIsLoading();
         getCheckedWordApi(this.state.user.uid, id)

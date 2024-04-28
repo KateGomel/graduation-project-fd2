@@ -1,4 +1,9 @@
-import { deleteLearnedApi, getLearnedApi } from "../../api/words";
+import {
+  createWordApi,
+  deleteLearnedApi,
+  getCheckedLearnedApi,
+  getLearnedApi,
+} from "../../api/words";
 import { ROUTES } from "../../constants/routes";
 import { TOAST_TYPE } from "../../constants/toast";
 import { Component } from "../../core/Component";
@@ -100,6 +105,36 @@ export class Learned extends Component {
     useNavigate(ROUTES.title);
   }
 
+  onCheckedWord({ id, translate }) {
+    useModal({
+      isOpen: true,
+      title: "Unmarked Word",
+      successCaption: "Mark",
+      confirmation: `Do you really want to mark as unlearned word "${translate}"?`,
+      onSuccess: () => {
+        this.toggleIsLoading();
+        getCheckedLearnedApi(this.state.user.uid, id)
+          .then(({ data }) => {
+            createWordApi(this.state.user.uid, data).then(({ data }) => {
+              deleteLearnedApi(this.state.user.uid, id);
+              this.loadAllWords();
+              useToastNotification({
+                message: "Success!",
+                type: TOAST_TYPE.success,
+              });
+              useNavigate(ROUTES.learned);
+            });
+          })
+          .catch(({ message }) => {
+            useToastNotification({ message });
+          })
+          .finally(() => {
+            this.toggleIsLoading();
+          });
+      },
+    });
+  }
+
   onClick({ target }) {
     const logOut = target.closest(".logout-btn");
     const uncheckedWordBtn = target.closest(".unchecked-word-btn");
@@ -121,6 +156,17 @@ export class Learned extends Component {
     }
   }
 
+  onChecked({ target }) {
+    const checkedBtn = target.closest(".checked");
+
+    if (checkedBtn) {
+      return this.onCheckedWord({
+        id: checkedBtn.dataset.id,
+        translate: checkedBtn.dataset.translate,
+      });
+    }
+  }
+
   setUser() {
     const { getUser } = useUserStore();
     this.setState({
@@ -133,10 +179,12 @@ export class Learned extends Component {
     this.setUser();
     this.loadAllWords();
     this.addEventListener("click", this.onClick);
+    this.addEventListener("change", this.onChecked);
   }
 
   componentWillUnmount() {
     this.removeEventListener("click", this.onClick);
+    this.addEventListener("change", this.onChecked);
   }
 }
 
