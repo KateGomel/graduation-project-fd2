@@ -200,10 +200,8 @@ export class Title extends Component {
     // });
   }
 
-  onSortWords(groupWord) {
-    console.log(groupWord);
+  onSortWords(groupWord, checkedRadioBtn) {
     this.loadAllWords();
-    this.toggleIsLoading();
     getWordApi(this.state.user.uid)
       .then(() => {
         let { words } = this.state;
@@ -218,18 +216,18 @@ export class Title extends Component {
             return item != groupWord;
           });
         }
-        console.log(words);
         this.setState({
           ...this.state,
           words: words,
         });
+        console.log(checkedRadioBtn);
         console.log(this.state);
       })
       .catch(({ message }) => {
         useToastNotification({ message });
       })
       .finally(() => {
-        this.toggleIsLoading();
+        console.log(checkedRadioBtn);
       });
   }
 
@@ -243,8 +241,10 @@ export class Title extends Component {
     }
     if (checkedRadioBtn) {
       const groupWord = checkedRadioBtn.value;
-      console.log(checkedRadioBtn);
-      return this.onSortWords(groupWord);
+      // checkedRadioBtn.setAttribute("checked", "");
+      // const checkedGroup = checkedRadioBtn.checked;
+      // console.log(checkedRadioBtn, groupWord, checkedGroup);
+      return this.onSortWords(groupWord, checkedRadioBtn);
     }
   }
 
