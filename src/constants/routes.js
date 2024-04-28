@@ -4,5 +4,6 @@ export const ROUTES = {
   signUp: "/sign-up",
   title: "/title",
   words: "/words",
+  learned: "/learned",
   notFound: "/404",
 };

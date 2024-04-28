@@ -25,7 +25,6 @@ export class Title extends Component {
     });
     this.state = {
       isLoading: false,
-      isNoChecked: true,
       user: null,
       words: [],
     };
@@ -161,7 +160,7 @@ export class Title extends Component {
   }
 
   toCheckedWords() {
-    console.log("ok");
+    useNavigate(ROUTES.title);
   }
 
   onClick = ({ target }) => {

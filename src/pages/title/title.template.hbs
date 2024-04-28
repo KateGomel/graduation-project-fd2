@@ -101,69 +101,65 @@
       </div>
     </div>
 
-    {{#if isNoChecked}}
+    {{#each words}}
+      <div class="flex w-full justify-between justify-items-center gap-0.5">
+        <div
+          class="basis-1/8 border font-bold border-zinc-400 p-2 items-center"
+        >{{this.translate}}</div>
 
-      {{#each words}}
-        <div class="flex w-full justify-between justify-items-center gap-0.5">
-          <div
-            class="basis-1/8 border font-bold border-zinc-400 p-2 items-center"
-          >{{this.translate}}</div>
+        <div
+          class="basis-1/8 border font-bold border-zinc-400 p-2 items-center"
+        >{{this.infinitive}}</div>
 
-          <div
-            class="basis-1/8 border font-bold border-zinc-400 p-2 items-center"
-          >{{this.infinitive}}</div>
+        <div
+          class="basis-1/8 border border-zinc-400 p-2 items-center"
+        >{{this.infTrans}}</div>
 
-          <div
-            class="basis-1/8 border border-zinc-400 p-2 items-center"
-          >{{this.infTrans}}</div>
+        <div
+          class="basis-1/8 border font-bold border-zinc-400 p-2 items-center"
+        >{{this.pastSimple}}</div>
 
-          <div
-            class="basis-1/8 border font-bold border-zinc-400 p-2 items-center"
-          >{{this.pastSimple}}</div>
+        <div
+          class="basis-1/8 border border-zinc-400 p-2 items-center"
+        >{{this.simTrans}}</div>
 
-          <div
-            class="basis-1/8 border border-zinc-400 p-2 items-center"
-          >{{this.simTrans}}</div>
+        <div
+          class="basis-1/8 border font-bold border-zinc-400 p-2 items-center"
+        >{{this.pastParticiple}}</div>
 
-          <div
-            class="basis-1/8 border font-bold border-zinc-400 p-2 items-center"
-          >{{this.pastParticiple}}</div>
+        <div class="basis-1/8 border border-zinc-400 p-2 items-center">
+          {{this.partTrans}}</div>
 
-          <div class="basis-1/8 border border-zinc-400 p-2 items-center">
-            {{this.partTrans}}</div>
+        <div
+          class="flex gap-1 justify-around basis-1/8 border border-zinc-400 p-2 items-center"
+        >
+          <input
+            data-id="{{this.id}}"
+            type="checkbox"
+            name="checked"
+            class="checked"
+          />
 
-          <div
-            class="flex gap-1 justify-around basis-1/8 border border-zinc-400 p-2 items-center"
-          >
-            <input
-              data-id="{{this.id}}"
-              type="checkbox"
-              name="checked"
-              class="checked"
-            />
+          <button
+            data-id="{{this.id}}"
+            data-translate="{{this.translate}}"
+            data-infinitive="{{this.infinitive}}"
+            data-infTrans="{{this.infTrans}}"
+            data-pastSimple="{{this.pastSimple}}"
+            data-simTrans="{{this.this.simTrans}}"
+            data-pastParticiple="{{this.pastParticiple}}"
+            data-partTrans="{{this.partTrans}}"
+            class="update-word-btn rounded bg-indigo-600 text-white hover:bg-indigo-700 my-2 px-3 text-lg"
+          >Update</button>
+          <button
+            data-id="{{this.id}}"
+            data-translate="{{this.translate}}"
+            class="delete-word-btn rounded bg-indigo-600 text-white hover:bg-indigo-700 my-2 px-3 text-lg"
+          >Delete</button>
 
-            <button
-              data-id="{{this.id}}"
-              data-translate="{{this.translate}}"
-              data-infinitive="{{this.infinitive}}"
-              data-infTrans="{{this.infTrans}}"
-              data-pastSimple="{{this.pastSimple}}"
-              data-simTrans="{{this.this.simTrans}}"
-              data-pastParticiple="{{this.pastParticiple}}"
-              data-partTrans="{{this.partTrans}}"
-              class="update-word-btn rounded bg-indigo-600 text-white hover:bg-indigo-700 my-2 px-3 text-lg"
-            >Update</button>
-            <button
-              data-id="{{this.id}}"
-              data-translate="{{this.translate}}"
-              class="delete-word-btn rounded bg-indigo-600 text-white hover:bg-indigo-700 my-2 px-3 text-lg"
-            >Delete</button>
-
-          </div>
         </div>
-      {{/each}}
-
-    {{/if}}
+      </div>
+    {{/each}}
 
   </div>
 
