@@ -202,26 +202,35 @@ export class Title extends Component {
 
   onSortWords(groupWord) {
     console.log(groupWord);
-    getWordApi(this.state.user.uid).then(() => {
-      let { words } = this.state;
-      words = words.filter((item) => {
-        if (item.group == groupWord) {
-          return item;
+    this.loadAllWords();
+    this.toggleIsLoading();
+    getWordApi(this.state.user.uid)
+      .then(() => {
+        let { words } = this.state;
+        if (groupWord == 0) {
+          words = words.filter((item) => {
+            return item != groupWord;
+          });
+        } else {
+          words = words.filter((item) => {
+            if (item.group == groupWord) {
+              return item;
+            }
+          });
         }
+        console.log(words);
+        this.setState({
+          ...this.state,
+          words: words,
+        });
+        console.log(this.state);
+      })
+      .catch(({ message }) => {
+        useToastNotification({ message });
+      })
+      .finally(() => {
+        this.toggleIsLoading();
       });
-      console.log(words);
-      this.setState({
-        ...this.state,
-        words: words,
-      });
-      console.log(this.state);
-    });
-    // .catch(({ message }) => {
-    //   useToastNotification({ message });
-    // })
-    // .finally(() => {
-    //   this.toggleIsLoading();
-    // });
   }
 
   onChecked({ target }) {
@@ -234,7 +243,7 @@ export class Title extends Component {
     }
     if (checkedRadioBtn) {
       const groupWord = checkedRadioBtn.value;
-
+      console.log(checkedRadioBtn);
       return this.onSortWords(groupWord);
     }
   }
