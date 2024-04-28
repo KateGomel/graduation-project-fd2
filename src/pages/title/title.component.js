@@ -207,15 +207,15 @@ export class Title extends Component {
     getWordApi(this.state.user.uid)
       .then(() => {
         let { words } = this.state;
-        if (groupWord == 0) {
-          words = words.filter((item) => {
-            return item != groupWord;
-          });
-        } else {
+        if (groupWord != 0) {
           words = words.filter((item) => {
             if (item.group == groupWord) {
               return item;
             }
+          });
+        } else {
+          words = words.filter((item) => {
+            return item != groupWord;
           });
         }
         console.log(words);
