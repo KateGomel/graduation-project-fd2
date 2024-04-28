@@ -88,18 +88,21 @@
         </label>
       </div>
     </div>
-
-    <div class="mt-10 flex w-full justify-between justify-items-center gap-0.5">
-      <div class="basis-1/8 p-2 font-semibold">Перевод</div>
-      <div class="basis-2/8 p-2 font-semibold">Infinitive</div>
-      <div class="basis-2/8 p-2 font-semibold">PastSimple</div>
-      <div class="basis-2/8 p-2 font-semibold">PastParticiple</div>
-      <div class="basis-1/8 p-2 flex justify-center">
-        <button
-          class="create-word-btn rounded bg-indigo-600 text-white hover:bg-indigo-700 mb-2 px-2 py-1 text-lg"
-        >Create new word</button>
+    {{#if words}}
+      <div
+        class="mt-10 flex w-full justify-between justify-items-center gap-0.5"
+      >
+        <div class="basis-1/8 p-2 font-semibold">Перевод</div>
+        <div class="basis-2/8 p-2 font-semibold">Infinitive</div>
+        <div class="basis-2/8 p-2 font-semibold">PastSimple</div>
+        <div class="basis-2/8 p-2 font-semibold">PastParticiple</div>
+        <div class="basis-1/8 p-2 flex justify-center">
+          <button
+            class="create-word-btn rounded bg-indigo-600 text-white hover:bg-indigo-700 mb-2 px-2 py-1 text-lg"
+          >Create new word</button>
+        </div>
       </div>
-    </div>
+    {{/if}}
 
     {{#each words}}
       <div class="flex w-full justify-between justify-items-center gap-0.5">

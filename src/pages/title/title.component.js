@@ -160,7 +160,7 @@ export class Title extends Component {
   }
 
   toCheckedWords() {
-    useNavigate(ROUTES.title);
+    useNavigate(ROUTES.learned);
   }
 
   onClick = ({ target }) => {
@@ -194,16 +194,15 @@ export class Title extends Component {
   };
 
   onCheckedWords(id) {
-    getWordApi(this.state.user.uid).then(() => {
-      const { words } = this.state;
-      console.log(words, id);
-    });
-    // .catch(({ message }) => {
-    //   useToastNotification({ message });
-    // })
-    // .finally(() => {
-    //   this.toggleIsLoading();
-    // });
+    getWordApi(this.state.user.uid)
+      .then(() => {
+        const { words } = this.state;
+        console.log(words, id);
+      })
+      .catch(({ message }) => {
+        useToastNotification({ message });
+      })
+      .finally(() => {});
   }
 
   onSortWords(groupWord, checkedRadioBtn) {
