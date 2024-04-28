@@ -1,32 +1,41 @@
 <ui-loader loading="{{isLoading}}" class-name="bg-white/50 z-10"></ui-loader>
 <div class="grid grid-cols-12 h-screen w-screen font-serif animate-fade">
 
-  <div class="col-span-1 bg-emerald-300 pt-6 px-6 block">
+  <div class="col-span-1 bg-emerald-300 pt-6 px-10 block">
     <div class="flex flex-col items-center px-2">
       <a
         href="mailto:{{user.email}}"
         class="text-lg text-indigo-800"
       >{{user.email}}</a>
       <button
-        class="logout-btn border-b text-indigo-500 border-indigo-500 mt-4 text-lg flex items-center p-2 w-full justify-center gap-2 hover:text-indigo-800"
+        class="logout-btn border-b text-indigo-600 border-indigo-600 mt-4 text-lg flex items-center p-2 w-full justify-center gap-2 hover:text-indigo-700"
       >
         <i class="icon-log-out logout-btn text-lg"></i>
         Logout
       </button>
-
       <button
         class="unchecked-word-btn rounded bg-indigo-600 text-white hover:bg-indigo-700 mt-10 px-2 py-1 text-lg"
-      > Unlearned words</button>
+      >
+        Unlearned
+        <i
+          class="icon-arrow-left-to-line unchecked-word-btn text-lg align-middle"
+        ></i>
+        Words
+      </button>
     </div>
   </div>
 
   <div
-    class="col-span-11 bg-emerald-100 pt-6 px-10 pb-40 text-lg text-indigo-900"
+    class="col-span-11 bg-emerald-100 pt-6 px-32 pb-40 text-lg text-indigo-900"
   >
 
     <p class="mb-6 indent-3">
       Эти слова отмечены Вами как выучинные. Их можно вернуть в общий список
       слов. Для этого снимите отметку на слове.
+    </p>
+
+    <p class="mb-6 indent-3">
+      Также слово можно удалить.
     </p>
 
     {{#if learned}}
@@ -44,7 +53,7 @@
     {{#each learned}}
       <div class="flex w-full justify-between justify-items-center gap-0.5">
         <div
-          class="basis-1/8 border font-bold border-zinc-400 p-2 items-center"
+          class="basis-1/8 border border-zinc-400 p-2 items-center"
         >{{this.translate}}</div>
 
         <div
@@ -71,19 +80,20 @@
           {{this.partTrans}}</div>
 
         <div
-          class="flex gap-1 justify-around basis-1/8 border border-zinc-400 p-2 items-center"
+          class="flex gap-8 justify-center basis-1/8 border border-zinc-400 p-2 items-center"
         >
           <input
             data-id="{{this.id}}"
             type="checkbox"
             name="checked"
             class="checked"
+            checked
           />
 
           <button
             data-id="{{this.id}}"
             data-translate="{{this.translate}}"
-            class="delete-word-btn rounded bg-indigo-600 text-white hover:bg-indigo-700 my-2 px-3 text-lg"
+            class="delete-btn rounded bg-indigo-600 text-white hover:bg-indigo-700 my-2 px-3 text-lg"
           >Delete</button>
 
         </div>

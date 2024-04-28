@@ -1,11 +1,13 @@
-import { getLearnedApi } from "../../api/words";
+import { deleteLearnedApi, getLearnedApi } from "../../api/words";
 import { ROUTES } from "../../constants/routes";
 import { TOAST_TYPE } from "../../constants/toast";
 import { Component } from "../../core/Component";
+import { useModal } from "../../hooks/useModal";
 import { useNavigate } from "../../hooks/useNavigate";
 import { useToastNotification } from "../../hooks/useToastNotification";
 import { useUserStore } from "../../hooks/useUserStore";
 import { authService } from "../../services/Auth";
+import { mapResponseApiData } from "../../utils/api";
 import template from "./learned.template.hbs";
 
 export class Learned extends Component {
@@ -67,6 +69,33 @@ export class Learned extends Component {
     }
   };
 
+  openDeleteModal({ id, translate }) {
+    useModal({
+      isOpen: true,
+      title: "Delete Word",
+      successCaption: "Delete",
+      confirmation: `Do you really want to delete word "${translate}"?`,
+      onSuccess: () => {
+        this.toggleIsLoading();
+        deleteLearnedApi(this.state.user.uid, id)
+          .then(() => {
+            this.loadAllWords();
+            useToastNotification({
+              message: "Success!",
+              type: TOAST_TYPE.success,
+            });
+            useNavigate(ROUTES.learned);
+          })
+          .catch(({ message }) => {
+            useToastNotification({ message });
+          })
+          .finally(() => {
+            this.toggleIsLoading();
+          });
+      },
+    });
+  }
+
   toUnlearnedWords() {
     useNavigate(ROUTES.title);
   }
@@ -74,6 +103,7 @@ export class Learned extends Component {
   onClick({ target }) {
     const logOut = target.closest(".logout-btn");
     const uncheckedWordBtn = target.closest(".unchecked-word-btn");
+    const deleteBtn = target.closest(".delete-btn");
 
     if (logOut) {
       return this.logout();
@@ -81,6 +111,13 @@ export class Learned extends Component {
 
     if (uncheckedWordBtn) {
       return this.toUnlearnedWords();
+    }
+
+    if (deleteBtn) {
+      return this.openDeleteModal({
+        id: deleteBtn.dataset.id,
+        translate: deleteBtn.dataset.translate,
+      });
     }
   }
 
@@ -94,6 +131,7 @@ export class Learned extends Component {
 
   componentDidMount() {
     this.setUser();
+    this.loadAllWords();
     this.addEventListener("click", this.onClick);
   }
 

@@ -24,12 +24,20 @@ export const updateWordApi = (userId, wordsId, data) => {
   return apiService.patch(`${userId}/${API_URLS.title}/${wordsId}`, data);
 };
 
+export const getCheckedWordApi = (userId, wordsId) => {
+  return apiService.get(`${userId}/${API_URLS.title}/${wordsId}`);
+};
+
 export const createLearnedApi = (userId, data) => {
   return apiService.post(`${userId}/${API_URLS.learned}`, data);
 };
 
 export const getLearnedApi = (userId) => {
   return apiService.get(`${userId}/${API_URLS.learned}`);
+};
+
+export const getCheckedLearnedApi = (userId, wordsId) => {
+  return apiService.get(`${userId}/${API_URLS.learned}/${wordsId}`);
 };
 
 export const deleteLearnedApi = (userId, wordsId) => {

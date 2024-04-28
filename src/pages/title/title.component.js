@@ -12,6 +12,8 @@ import {
   getWordApi,
   deleteWordApi,
   updateWordApi,
+  getCheckedWordApi,
+  createLearnedApi,
 } from "../../api/words";
 import { extractFormData } from "../../utils/extractFormData";
 import { mapResponseApiData } from "../../utils/api";
@@ -77,9 +79,9 @@ export class Title extends Component {
   openDeleteWordModal({ id, translate }) {
     useModal({
       isOpen: true,
-      title: "Update Word",
+      title: "Delete Word",
       successCaption: "Delete",
-      confirmation: `Do you really want to delete "${translate}"?`,
+      confirmation: `Do you really want to delete word "${translate}"?`,
       onSuccess: () => {
         this.toggleIsLoading();
         deleteWordApi(this.state.user.uid, id)
@@ -193,20 +195,39 @@ export class Title extends Component {
     }
   };
 
-  onCheckedWords(id) {
-    getWordApi(this.state.user.uid)
-      .then(() => {
-        const { words } = this.state;
-        console.log(words, id);
-      })
-      .catch(({ message }) => {
-        useToastNotification({ message });
-      })
-      .finally(() => {});
+  onCheckedWords({ id, translate }) {
+    useModal({
+      isOpen: true,
+      title: "Checked Word",
+      successCaption: "Checked",
+      confirmation: `Do you really want to checked as learned word "${translate}"?`,
+      onSuccess: () => {
+        this.toggleIsLoading();
+        getCheckedWordApi(this.state.user.uid, id)
+          .then(({ data }) => {
+            createLearnedApi(this.state.user.uid, data).then(({ data }) => {
+              deleteWordApi(this.state.user.uid, id);
+              this.loadAllWords();
+              useToastNotification({
+                message: "Success!",
+                type: TOAST_TYPE.success,
+              });
+              useNavigate(ROUTES.title);
+            });
+          })
+          .catch(({ message }) => {
+            useToastNotification({ message });
+          })
+          .finally(() => {
+            this.toggleIsLoading();
+          });
+      },
+    });
   }
 
   onSortWords(groupWord, checkedRadioBtn) {
     this.loadAllWords();
+    this.toggleIsLoading();
     getWordApi(this.state.user.uid)
       .then(() => {
         let { words } = this.state;
@@ -225,14 +246,15 @@ export class Title extends Component {
           ...this.state,
           words: words,
         });
-        console.log(checkedRadioBtn);
-        console.log(this.state);
+        // console.log(checkedRadioBtn);
+        // console.log(this.state);
       })
       .catch(({ message }) => {
         useToastNotification({ message });
       })
       .finally(() => {
-        console.log(checkedRadioBtn);
+        // console.log(checkedRadioBtn);
+        this.toggleIsLoading();
       });
   }
 
@@ -241,8 +263,10 @@ export class Title extends Component {
     const checkedRadioBtn = target.closest(".radio-input");
 
     if (checkedWordBtn) {
-      // console.log(checkedWordBtn.checked, checkedWordBtn.dataset.id);
-      return this.onCheckedWords(checkedWordBtn.dataset.id);
+      return this.onCheckedWords({
+        id: checkedWordBtn.dataset.id,
+        translate: checkedWordBtn.dataset.translate,
+      });
     }
     if (checkedRadioBtn) {
       const groupWord = checkedRadioBtn.value;
