@@ -74,6 +74,14 @@ export class Title extends Component {
           this.toggleIsLoading();
         });
     }
+
+    const radioBtn = Array.from(this.querySelectorAll(".radio-input"));
+    let currentGroup = radioBtn.filter((item) => {
+      if (item.value == localStorage.getItem("value")) {
+        return (item.checked = true);
+      }
+    });
+    console.log(currentGroup);
   };
 
   openDeleteWordModal({ id, translate }) {
@@ -225,9 +233,9 @@ export class Title extends Component {
     });
   }
 
-  onSortWords(groupWord, checkedRadioBtn) {
+  onSortWords(groupWord) {
     this.loadAllWords();
-    this.toggleIsLoading();
+
     getWordApi(this.state.user.uid)
       .then(() => {
         let { words } = this.state;
@@ -246,16 +254,11 @@ export class Title extends Component {
           ...this.state,
           words: words,
         });
-        // console.log(checkedRadioBtn);
-        // console.log(this.state);
       })
       .catch(({ message }) => {
         useToastNotification({ message });
       })
-      .finally(() => {
-        // console.log(checkedRadioBtn);
-        this.toggleIsLoading();
-      });
+      .finally(() => {});
   }
 
   onChecked({ target }) {
@@ -269,11 +272,10 @@ export class Title extends Component {
       });
     }
     if (checkedRadioBtn) {
+      localStorage.clear();
       const groupWord = checkedRadioBtn.value;
-      // checkedRadioBtn.setAttribute("checked", "");
-      // const checkedGroup = checkedRadioBtn.checked;
-      // console.log(checkedRadioBtn, groupWord, checkedGroup);
-      return this.onSortWords(groupWord, checkedRadioBtn);
+      localStorage.setItem("value", groupWord);
+      return this.onSortWords(groupWord);
     }
   }
 
