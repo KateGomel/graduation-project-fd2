@@ -26,7 +26,6 @@ export class Learned extends Component {
     this.state = {
       isLoading: false,
       learned: [],
-      user: null,
     };
   }
 
