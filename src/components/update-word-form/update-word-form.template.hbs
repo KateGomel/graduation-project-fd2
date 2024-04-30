@@ -1,61 +1,53 @@
-<form class="update-word-form flex flex-col gap-3">
+<form class="update-word-form flex flex-col gap-3 font-serif">
 
-  <label class="w-full">
-    <p class="text-sm text-black">Перевод</p>
-    <input
-      type="text"
-      name="translate"
-      class="p-2 w-full border rounded mb-1"
-      value="{{translate}}"
-    />
-  </label>
+  <ui-input
+    label="Перевод"
+    name="translate"
+    type="text"
+    class-name="p-2 mb-1 text-lg"
+    value="{{translate}}"
+  ></ui-input>
 
-  <label class="w-full">
-    <p class="text-sm text-black">Infinitive</p>
-    <input
-      type="text"
-      name="infinitive"
-      class="p-2 w-full border rounded mb-1"
-      value="{{infinitive}}"
-    />
-    <input
-      type="text"
-      name="infTrans"
-      class="p-2 w-full border rounded mb-1"
-      value="{{inftrans}}"
-    />
-  </label>
+  <ui-input
+    label="Infinitive"
+    name="infinitive"
+    type="text"
+    class-name="p-2 text-lg"
+    value="{{infinitive}}"
+  ></ui-input>
+  <ui-input
+    name="infTrans"
+    type="text"
+    class-name="p-2 text-lg"
+    value="{{inftrans}}"
+  ></ui-input>
 
-  <label class="w-full">
-    <p class="text-sm text-black">PastSimple</p>
-    <input
-      type="text"
-      name="pastSimple"
-      class="p-2 w-full border rounded mb-1"
-      value="{{pastsimple}}"
-    />
-    <input
-      type="text"
-      name="simTrans"
-      class="p-2 w-full border rounded mb-1"
-      value="{{simtrans}}"
-    />
-  </label>
+  <ui-input
+    label="PastSimple"
+    name="pastSimple"
+    type="text"
+    class-name="p-2 text-lg"
+    value="{{pastsimple}}"
+  ></ui-input>
+  <ui-input
+    name="simTrans"
+    type="text"
+    class-name="p-2 text-lg"
+    value="{{simtrans}}"
+  ></ui-input>
 
-  <label class="w-full">
-    <p class="text-sm text-black">PastParticiple</p>
-    <input
-      type="text"
-      name="pastParticiple"
-      class="p-2 w-full border rounded mb-1"
-      value="{{pastparticiple}}"
-    />
-    <input
-      type="text"
-      name="partTrans"
-      class="p-2 w-full border rounded mb-1"
-      value="{{parttrans}}"
-    />
-  </label>
+  <ui-input
+    label="PastParticiple"
+    name="pastParticiple"
+    type="text"
+    class-name="p-2 text-lg"
+    value="{{pastparticiple}}"
+  ></ui-input>
+  <ui-input
+    name="partTrans"
+    type="text"
+    class-name="p-2 text-lg"
+    value="{{parttrans}}"
+  ></ui-input>
 
 </form>

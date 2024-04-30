@@ -1,17 +1,15 @@
 {{#if isOpen}}
 
   <div
-    class="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-emerald-100/[0.7]"
+    class="font-serif fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-emerald-100/[0.7]"
   >
 
     <div class="relative p-4 w-full max-w-2xl max-h-full">
 
-      <!-- Modal content -->
       <div
         class="relative bg-white rounded-lg shadow animate-fade-down animate-duration-500"
       >
 
-        <!-- Modal header -->
         <div
           class="flex items-center justify-between p-4 md:p-5 border-b rounded-t"
         >
@@ -29,9 +27,8 @@
 
         </div>
 
-        <!-- Modal body -->
         <div
-          class="p-4 md:p-5 space-y-4 modal-body max-h-[700px] overflow-auto"
+          class="p-4 md:p-5 space-y-4 modal-body max-h-[700px] text-indigo-600 text-lg"
         >
 
           {{#if confirmation}}
@@ -40,16 +37,16 @@
 
         </div>
 
-        <!-- Modal footer -->
         <div
           class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b"
         >
+
           <button
-            class="modal-success-trigger text-white bg-indigo-600 hover:bg-indigo-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+            class="modal-success-trigger text-white bg-indigo-600 hover:bg-indigo-800 font-medium rounded-lg px-5 py-2.5 text-center"
           >{{successCaption}}</button>
 
           <button
-            class="modal-reject-trigger py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-indigo-700"
+            class="modal-reject-trigger py-2.5 px-5 ms-3 font-medium text-indigo-600 bg-white rounded-lg border border-slate-300 hover:bg-gray-200 hover:text-indigo-700"
           >{{rejectCaption}}</button>
 
         </div>
