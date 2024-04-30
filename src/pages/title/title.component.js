@@ -74,14 +74,14 @@ export class Title extends Component {
           this.toggleIsLoading();
         });
     }
-
     const radioBtn = Array.from(this.querySelectorAll(".radio-input"));
-    let currentGroup = radioBtn.filter((item) => {
+    const currentGroup = radioBtn.filter((item) => {
       if (item.value == localStorage.getItem("value")) {
-        return (item.checked = true);
+        return item;
       }
     });
-    console.log(currentGroup);
+    currentGroup.checked = true;
+    console.log(currentGroup, currentGroup.checked);
   };
 
   openDeleteWordModal({ id, translate }) {
@@ -203,7 +203,7 @@ export class Title extends Component {
     }
   };
 
-  onCheckedWords({ id, translate }) {
+  onCheckedWords({ id, translate }, checkedWordBtn) {
     useModal({
       isOpen: true,
       title: "Marked Word",
@@ -231,11 +231,11 @@ export class Title extends Component {
           });
       },
     });
+    checkedWordBtn.checked = false;
   }
 
   onSortWords(groupWord) {
     this.loadAllWords();
-
     getWordApi(this.state.user.uid)
       .then(() => {
         let { words } = this.state;
@@ -266,10 +266,13 @@ export class Title extends Component {
     const checkedRadioBtn = target.closest(".radio-input");
 
     if (checkedWordBtn) {
-      return this.onCheckedWords({
-        id: checkedWordBtn.dataset.id,
-        translate: checkedWordBtn.dataset.translate,
-      });
+      return this.onCheckedWords(
+        {
+          id: checkedWordBtn.dataset.id,
+          translate: checkedWordBtn.dataset.translate,
+        },
+        checkedWordBtn
+      );
     }
     if (checkedRadioBtn) {
       localStorage.clear();

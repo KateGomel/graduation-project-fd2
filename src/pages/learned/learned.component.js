@@ -104,7 +104,7 @@ export class Learned extends Component {
     useNavigate(ROUTES.title);
   }
 
-  onCheckedWord({ id, translate }) {
+  onCheckedWord({ id, translate }, checkedBtn) {
     useModal({
       isOpen: true,
       title: "Unmarked Word",
@@ -132,6 +132,7 @@ export class Learned extends Component {
           });
       },
     });
+    checkedBtn.checked = true;
   }
 
   onClick({ target }) {
@@ -159,10 +160,13 @@ export class Learned extends Component {
     const checkedBtn = target.closest(".checked");
 
     if (checkedBtn) {
-      return this.onCheckedWord({
-        id: checkedBtn.dataset.id,
-        translate: checkedBtn.dataset.translate,
-      });
+      return this.onCheckedWord(
+        {
+          id: checkedBtn.dataset.id,
+          translate: checkedBtn.dataset.translate,
+        },
+        checkedBtn
+      );
     }
   }
 
