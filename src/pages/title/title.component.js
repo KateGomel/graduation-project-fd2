@@ -232,6 +232,7 @@ export class Title extends Component {
       },
     });
     checkedWordBtn.checked = false;
+    this.loadAllWords();
   }
 
   onSortWords(groupWord) {

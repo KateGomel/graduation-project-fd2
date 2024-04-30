@@ -133,6 +133,7 @@ export class Learned extends Component {
       },
     });
     checkedBtn.checked = true;
+    this.loadAllWords();
   }
 
   onClick({ target }) {
