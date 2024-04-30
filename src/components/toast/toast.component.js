@@ -19,7 +19,7 @@ export class Toast extends Component {
   };
 
   showToast = ({ detail }) => {
-    this.timerID = setTimeout(this.hideToast, 5000);
+    this.timerID = setTimeout(this.hideToast, 2000);
     this.setState({
       isShow: true,
       type: getToastType(detail.type),
