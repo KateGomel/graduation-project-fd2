@@ -45,28 +45,66 @@
     <div class="flex w-full justify-between">
       <div class="w-1/2">
         <label class="radio-btn items-center">
+          {{#if (isEqual activeFilter "0")}}
+          <input checked type="radio" class="radio-input" name="sort" value="0" />
+          {{else}}
           <input type="radio" class="radio-input" name="sort" value="0" />
+          {{/if}}
           Все слова
         </label>
         <br />
         <label class="radio-btn items-center">
+          {{#if (isEqual activeFilter "1")}}
+          <input checked type="radio" class="radio-input" name="sort" value="1" />
+          {{else}}
           <input type="radio" class="radio-input" name="sort" value="1" />
+          {{/if}}
           Изменение гласной по принципу: [ɪ] - [æ] - [ʌ] (ring - rang - rung)
         </label>
         <br />
         <label class="radio-btn items-center">
-          <input type="radio" class="radio-input" name="sort" value="2" />
+          {{#if (isEqual activeFilter "2")}}
+            <input
+              checked
+              type="radio"
+              class="radio-input"
+              name="sort"
+              value="2"
+            />
+          {{else}}
+            <input type="radio" class="radio-input" name="sort" value="2" />
+          {{/if}}
           Изменение гласной во второй и третьей форме (dig - dug - dug)
         </label>
         <br />
         <label class="radio-btn items-center">
-          <input type="radio" class="radio-input" name="sort" value="3" />
+          {{#if (isEqual activeFilter "3")}}
+            <input
+              checked
+              type="radio"
+              class="radio-input"
+              name="sort"
+              value="3"
+            />
+          {{else}}
+            <input type="radio" class="radio-input" name="sort" value="3" />
+          {{/if}}
           Вторая и третья форма заканчиваются на –ought или –aught (teach -
           taught - taught)
         </label>
         <br />
         <label class="radio-btn items-center">
-          <input type="radio" class="radio-input" name="sort" value="5" />
+          {{#if (isEqual activeFilter "5")}}
+            <input
+              checked
+              type="radio"
+              class="radio-input"
+              name="sort"
+              value="5"
+            />
+          {{else}}
+            <input type="radio" class="radio-input" name="sort" value="5" />
+          {{/if}}
           Вторая и третья формы имеют окончания -ew –wn (grow - grew - grown)
         </label>
 
@@ -74,22 +112,62 @@
 
       <div class="w-1/2 pt-7">
         <label class="radio-btn items-center inline">
-          <input type="radio" class="radio-input" name="sort" value="4" />
+          {{#if (isEqual activeFilter "4")}}
+            <input
+              checked
+              type="radio"
+              class="radio-input"
+              name="sort"
+              value="4"
+            />
+          {{else}}
+            <input type="radio" class="radio-input" name="sort" value="4" />
+          {{/if}}
           Оглушение согласной в конце слова (spend - spent - spent)
         </label>
         <br />
         <label class="radio-btn items-center">
-          <input type="radio" class="radio-input" name="sort" value="6" />
+          {{#if (isEqual activeFilter "6")}}
+            <input
+              checked
+              type="radio"
+              class="radio-input"
+              name="sort"
+              value="6"
+            />
+          {{else}}
+            <input type="radio" class="radio-input" name="sort" value="6" />
+          {{/if}}
           Все три формы одинаковые
         </label>
         <br />
         <label class="radio-btn items-center">
-          <input type="radio" class="radio-input" name="sort" value="7" />
+          {{#if (isEqual activeFilter "7")}}
+            <input
+              checked
+              type="radio"
+              class="radio-input"
+              name="sort"
+              value="7"
+            />
+          {{else}}
+            <input type="radio" class="radio-input" name="sort" value="7" />
+          {{/if}}
           Все три формы разные
         </label>
         <br />
         <label class="radio-btn items-center">
-          <input type="radio" class="radio-input" name="sort" value="8" />
+          {{#if (isEqual activeFilter "8")}}
+            <input
+              checked
+              type="radio"
+              class="radio-input"
+              name="sort"
+              value="8"
+            />
+          {{else}}
+            <input type="radio" class="radio-input" name="sort" value="8" />
+          {{/if}}
           Слова, добавленные пользователем
         </label>
       </div>
@@ -105,7 +183,7 @@
         <div class="basis-1/8 p-2 flex justify-center">
           <ui-button
             caption="Create new word"
-            class-name="create-word-btn my-0 px-2 py-1 text-lg"
+            class-name="create-word-btn py-0 px-2 m-0 text-lg"
           ></ui-button>
         </div>
       </div>

@@ -29,6 +29,7 @@ export class Title extends Component {
       isLoading: false,
       user: null,
       words: [],
+      activeFilter: "0",
     };
   }
 
@@ -254,6 +255,7 @@ export class Title extends Component {
         this.setState({
           ...this.state,
           words: words,
+          activeFilter: groupWord,
         });
       })
       .catch(({ message }) => {

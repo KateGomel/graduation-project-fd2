@@ -31,3 +31,7 @@ export class Component extends HTMLElement {
   componentDidMount() {}
   componentWillUnmount() {}
 }
+
+Handlebars.registerHelper("isEqual", (value1, value2) => {
+  return value1 === value2;
+});
