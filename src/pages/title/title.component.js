@@ -75,14 +75,6 @@ export class Title extends Component {
           this.toggleIsLoading();
         });
     }
-    const radioBtn = Array.from(this.querySelectorAll(".radio-input"));
-    const currentGroup = radioBtn.filter((item) => {
-      if (item.value == localStorage.getItem("value")) {
-        return item;
-      }
-    });
-    currentGroup.checked = true;
-    console.log(currentGroup, currentGroup.checked);
   };
 
   openDeleteWordModal({ id, translate }) {
@@ -278,9 +270,7 @@ export class Title extends Component {
       );
     }
     if (checkedRadioBtn) {
-      localStorage.clear();
       const groupWord = checkedRadioBtn.value;
-      localStorage.setItem("value", groupWord);
       return this.onSortWords(groupWord);
     }
   }
@@ -302,7 +292,7 @@ export class Title extends Component {
 
   componentWillUnmount() {
     this.removeEventListener("click", this.onClick);
-    this.addEventListener("change", this.onChecked);
+    this.removeEventListener("change", this.onChecked);
   }
 }
 

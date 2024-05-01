@@ -188,7 +188,7 @@ export class Learned extends Component {
 
   componentWillUnmount() {
     this.removeEventListener("click", this.onClick);
-    this.addEventListener("change", this.onChecked);
+    this.removeEventListener("change", this.onChecked);
   }
 }
 
